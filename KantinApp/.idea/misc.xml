@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/drawable/button.xml" value="0.290625" />
+        <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/drawable/outlined_button.xml" value="0.290625" />
+        <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/drawable/text_input_rectangle.xml" value="0.290625" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/activity_login.xml" value="0.27447916666666666" />
       </map>
     </option>

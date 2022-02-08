@@ -1,3 +1,28 @@
 <resources>
-    <string name="app_name">KantinApp</string>
+    <string name="app_name">Sistem Informasi Bon Kantin</string>
+
+    <string name="login_title">Login</string>
+    <string name="logout_title">Logout</string>
+    <string name="register_title">Akun Baru</string>
+
+    <string name="username_title">Username</string>
+    <string name="password_title">Password</string>
+    <string name="nama_kantin_title">Nama Kantin</string>
+
+    <string name="no_hp_title">No.HP</string>
+    <string name="pekerjaan_title">Pekerjaan</string>
+
+    <string name="name_title">Nama</string>
+    <string name="jumlah_title">Jumlah</string>
+    <string name="harga_title">Harga</string>
+    <string name="total_title">Total</string>
+    <string name="menu_title">Daftar Menu</string>
+
+    <string name="name">Adventia Gea</string>
+    <string name="menu">Ayam Kremes</string>
+    <string name="jumlah">1</string>
+    <string name="tanggal">16/12/2021</string>
+    <string name="harga">12.000</string>
+
+    <string name="selesai">Selesai</string>
 </resources>
