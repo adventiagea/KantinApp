@@ -6,4 +6,107 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Sistem Informasi"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bon Kantin"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/title1"
+        app:layout_constraintStart_toStartOf="@+id/title1"
+        app:layout_constraintTop_toBottomOf="@+id/title1"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/username_input"
+        android:layout_width="361dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:fontFamily="@font/lato_regular"
+        android:background="@drawable/text_input_rectangle"
+        android:hint="@string/username_title"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/title2"
+        app:layout_constraintStart_toStartOf="@+id/title2"
+        app:layout_constraintTop_toBottomOf="@+id/title2" />
+
+    <EditText
+        android:id="@+id/password_input"
+        android:layout_width="361dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/text_input_rectangle"
+        android:ems="10"
+        android:fontFamily="@font/lato_regular"
+        android:hint="@string/password_title"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/username_input"
+        app:layout_constraintStart_toStartOf="@+id/username_input"
+        app:layout_constraintTop_toBottomOf="@+id/username_input" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/lato_regular"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:text="@string/login_title"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="@+id/password_input"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/password_input"
+        app:layout_constraintTop_toBottomOf="@+id/password_input" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/outlined_button"
+        android:fontFamily="@font/lato_regular"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:text="@string/register_title"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="@+id/login_button"
+        app:layout_constraintStart_toStartOf="@+id/login_button"
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
