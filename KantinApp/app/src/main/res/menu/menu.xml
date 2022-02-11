@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_edit_nama"
+        android:title="@string/edit_nama"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_edit_transaksi"
+        android:title="@string/edit_transaksi"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_tambah_transaksi"
+        android:title="@string/tambah_transaksi"
+        app:showAsAction="never"/>
+
+</menu>
