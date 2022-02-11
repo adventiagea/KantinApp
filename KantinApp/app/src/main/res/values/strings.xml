@@ -15,14 +15,21 @@
     <string name="name_title">Nama</string>
     <string name="jumlah_title">Jumlah</string>
     <string name="harga_title">Harga</string>
-    <string name="total_title">Total</string>
+    <string name="total_title">Total  :</string>
     <string name="menu_title">Daftar Menu</string>
+    <string name="tanggal_title">Tanggal</string>
 
     <string name="name">Adventia Gea</string>
     <string name="menu">Ayam Kremes</string>
     <string name="jumlah">1</string>
     <string name="tanggal">16/12/2021</string>
     <string name="harga">12.000</string>
+    <string name="total">100.000</string>
 
     <string name="selesai">Selesai</string>
+    <string name="share">Bagikan</string>
+    
+    <string name="edit_nama">Edit Nama Pelanggan</string>
+    <string name="tambah_transaksi">Tambah Transaksi</string>
+    <string name="edit_transaksi">Edit Transaksi</string>
 </resources>
