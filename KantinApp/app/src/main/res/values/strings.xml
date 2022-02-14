@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sistem Informasi Bon Kantin</string>
 
     <string name="login_title">Login</string>
@@ -26,10 +26,19 @@
     <string name="harga">12.000</string>
     <string name="total">100.000</string>
 
+    <string name="default_nama">None</string>
+    <string name="default_menu">None</string>
+    <string name="default_jumlah">0</string>
+    <string name="default_tanggal">--/--/----</string>
+    <string name="default_harga">12.000</string>
+
     <string name="selesai">Selesai</string>
+    <string name="simpan_perubahan">Simpan Perubahan</string>
     <string name="share">Bagikan</string>
-    
-    <string name="edit_nama">Edit Nama Pelanggan</string>
-    <string name="tambah_transaksi">Tambah Transaksi</string>
-    <string name="edit_transaksi">Edit Transaksi</string>
+    <string name="ubah_tanggal">Ubah Tanggal</string>
+    <string name="ubah_jumlah">Ubah Jumlah</string>
+    <string name="ubah_harga">Ubah harga menjadi  :</string>
+
+    <string name="input_harga" tools:ignore="TypographyEllipsis">Masukkan harga...</string>
+    <string name="input_nama_baru" tools:ignore="TypographyEllipsis">Masukkan nama baru...</string>
 </resources>
