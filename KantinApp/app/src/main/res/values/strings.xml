@@ -41,4 +41,10 @@
 
     <string name="input_harga" tools:ignore="TypographyEllipsis">Masukkan harga...</string>
     <string name="input_nama_baru" tools:ignore="TypographyEllipsis">Masukkan nama baru...</string>
+
+    <string name="edit_nama">Edit Nama Pelanggan</string>
+    <string name="edit_transaksi">Edit Transaksi</string>
+    <string name="tambah_transaksi">Tambah Transaksi</string>
+    <string name="cari_pelanggan">Cari Pelanggan</string>
+    <string name="new_pelanggan">Pelanggan Baru</string>
 </resources>

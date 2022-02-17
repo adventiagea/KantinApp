@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dicoding.picodiploma.kantinapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,33 +12,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KantinApp">
         <activity
+            android:name=".EditNamaActivity"
+            android:label="@string/edit_nama"
+            android:exported="false" />
+        <activity
+            android:name=".TambahTransaksiActivity"
+            android:label="@string/tambah_transaksi"
+            android:exported="false" />
+        <activity
+            android:name=".EditTransaksiActivity"
+            android:exported="false"
+            android:label="@string/edit_transaksi"
+            android:theme="@style/Theme.KantinApp.NoActionBar" />
+        <activity
             android:name=".PelangganActivity"
+            android:label="@string/new_pelanggan"
             android:exported="true" />
         <activity
             android:name=".ListPelangganActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ListMenuActivity"
+            android:label="@string/cari_pelanggan"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true" >
-
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
