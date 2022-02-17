@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/drawable/add.xml" value="0.290625" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/drawable/button.xml" value="0.290625" />
+        <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/drawable/edit_calendar.xml" value="0.290625" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/drawable/outlined_button.xml" value="0.290625" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/drawable/text_input_rectangle.xml" value="0.290625" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/activity_edit_nama.xml" value="0.27447916666666666" />
@@ -15,7 +16,7 @@
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/activity_pelanggan.xml" value="0.264" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/activity_register.xml" value="0.27447916666666666" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/activity_tambah_transaksi.xml" value="0.264" />
-        <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/list_edit_transaksi.xml" value="0.27447916666666666" />
+        <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/list_edit_transaksi.xml" value="0.536" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/list_menu.xml" value="0.27447916666666666" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/list_pelanggan.xml" value="0.1" />
         <entry key="..\:/project/Ayu/Code - KantinApp/KantinApp/app/src/main/res/layout/list_transaksi.xml" value="0.264" />
