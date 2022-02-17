@@ -1,5 +1,6 @@
 package com.dicoding.picodiploma.kantinapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -28,15 +29,33 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.menu_edit_nama -> {
+                val intent = Intent(this, EditNamaActivity::class.java)
+                startActivity(intent)
+
                 true
             }
             R.id.menu_edit_transaksi -> {
+                val intent = Intent(this, EditTransaksiActivity::class.java)
+                startActivity(intent)
+
                 true
             }
             R.id.menu_tambah_transaksi -> {
+                val intent = Intent(this, TambahTransaksiActivity::class.java)
+                startActivity(intent)
+
                 true
             }
             R.id.share -> {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+                    type = "text/plain"
+                }
+
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
+
                 true
             }
 
