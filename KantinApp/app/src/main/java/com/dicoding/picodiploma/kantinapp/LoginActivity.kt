@@ -5,12 +5,20 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.kantinapp.api.ApiBase
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityLoginBinding
+import com.dicoding.picodiploma.kantinapp.model.UserData
+import com.dicoding.picodiploma.kantinapp.viewmodel.LoginViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var loginBinding : ActivityLoginBinding
+    private lateinit var loginVM : LoginViewModel
     private lateinit var sharedPreferences: SharedPreferences
     private val preferencesName = "kantinApp"
     private val userKey = "key_user"
@@ -21,20 +29,35 @@ class LoginActivity : AppCompatActivity() {
         setContentView(loginBinding.root)
 
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+        loginVM = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[LoginViewModel::class.java]
 
         loginBinding.loginButton.setOnClickListener {
-            val username = loginBinding.usernameInput.text.toString()
-            val password = loginBinding.passwordInput.text.toString()
+            val usernameEt = loginBinding.usernameInput.text.toString()
+            val passwordEt = loginBinding.passwordInput.text.toString()
 
-            if (username.isNotEmpty() && password.isNotEmpty()){
-                val intent = Intent(this, ListPelangganActivity::class.java)
-                startActivity(intent)
+            if (usernameEt.isNotEmpty() && passwordEt.isNotEmpty()){
+                loginVM.setUser(usernameEt)
+                loginVM.getUser().observe(this,{
+                    if (it != null){
+                        if (it.username == usernameEt && it.password == passwordEt){
+                            val intent = Intent(this, ListPelangganActivity::class.java)
+                            startActivity(intent)
+
+                            Toast.makeText(this, "Selamat Datang ${it.namaKantin}!", Toast.LENGTH_SHORT).show()
+                        }
+                        else {
+                            Toast.makeText(this, "Username atau password salah!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
+
+
             }
             else {
                 Toast.makeText(this, "Silahkan masukkan username dan password!", Toast.LENGTH_SHORT).show()
             }
 
-            userLogin(username)
+            userLogin(usernameEt)
         }
 
         loginBinding.registerButton.setOnClickListener {

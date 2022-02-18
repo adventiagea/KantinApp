@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiBase {
-    private const val URL = "http://localhost/KantinAppDB/"
+    private const val URL = "http://192.168.1.5:80/KantinAppDB/"
 
     val retrofit = Retrofit.Builder()
         .baseUrl(URL)
