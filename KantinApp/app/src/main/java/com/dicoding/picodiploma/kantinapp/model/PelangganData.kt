@@ -1,17 +1,20 @@
 package com.dicoding.picodiploma.kantinapp.model
 
+import androidx.annotation.Nullable
 import com.google.gson.annotations.SerializedName
 
 data class PelangganData(
+    @Nullable
     @SerializedName("id_pelanggan")
-    val idPelanggan : String,
+    var idPelanggan : String?,
 
     @SerializedName("nama_pelanggan")
-    val namaPelanggan : String,
+    var namaPelanggan : String,
 
+    @Nullable
     @SerializedName("no_hp")
-    val nomorHP : String,
+    var nomorHP : String?,
 
     @SerializedName("id_user")
-    val idUser : String
+    var idUser : Int
 )

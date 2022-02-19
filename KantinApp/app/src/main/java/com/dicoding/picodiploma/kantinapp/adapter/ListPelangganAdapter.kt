@@ -46,7 +46,7 @@ class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganV
 
                 val id = pelanggan.idUser
                 sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
-                saveNamaPelanggan(id)
+                saveIdPelanggan(id)
             }
 
             itemView.setOnClickListener {
@@ -66,10 +66,10 @@ class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganV
 
     }
 
-    private fun saveNamaPelanggan(customerName : String) {
+    private fun saveIdPelanggan(customerName : Int) {
         val name : SharedPreferences.Editor = sharedPreferences.edit()
 
-        name.putString(namaPelanggan, customerName)
+        name.putInt(namaPelanggan, customerName)
         name.apply()
     }
 

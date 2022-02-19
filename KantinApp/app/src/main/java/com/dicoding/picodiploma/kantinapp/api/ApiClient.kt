@@ -4,9 +4,8 @@ import com.dicoding.picodiploma.kantinapp.model.PelangganArray
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.model.UserData
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.Response
+import retrofit2.http.*
 
 interface ApiClient {
     @GET("user/get_user_detail.php")
@@ -23,9 +22,18 @@ interface ApiClient {
         @Query("id_user") id_user : Int
     ): Call<PelangganArray>
 
-    @GET("pelanggan/create_pelanggan.php")
+    @FormUrlEncoded
+    @POST("pelanggan/create_pelanggan.php")
     fun addPelanggan(
-        @Query("nama_pelanggan") nama_pelanggan : String,
-        @Query("id_user") id_user : Int
+        @Field("nama_pelanggan") nama_pelanggan: String,
+        @Field("id_user") id_user: Int
     ): Call<PelangganData>
+
+    @FormUrlEncoded
+    @POST("user/create_user.php")
+    fun addUser(
+        @Field("username") nama_pelanggan: String,
+        @Field("password") id_user: String,
+        @Field("nama_kantin") nama_kantin: String
+    ): Call<UserData>
 }
