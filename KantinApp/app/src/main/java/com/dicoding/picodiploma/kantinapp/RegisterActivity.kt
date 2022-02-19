@@ -20,6 +20,8 @@ class RegisterActivity : AppCompatActivity() {
             val namaKantin = registerBinding.namaKantinInput.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty() && namaKantin.isNotEmpty()){
+
+
                 Toast.makeText(this, "Sukses membuat akun!", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, LoginActivity::class.java)

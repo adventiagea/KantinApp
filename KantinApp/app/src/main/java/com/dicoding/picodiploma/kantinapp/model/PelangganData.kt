@@ -3,6 +3,8 @@ package com.dicoding.picodiploma.kantinapp.model
 import com.google.gson.annotations.SerializedName
 
 data class PelangganData(
+    @SerializedName("id_pelanggan")
+    val idPelanggan : String,
 
     @SerializedName("nama_pelanggan")
     val namaPelanggan : String,
@@ -10,6 +12,6 @@ data class PelangganData(
     @SerializedName("no_hp")
     val nomorHP : String,
 
-    @SerializedName("id_pelanggan")
-    val idPelanggan : String
+    @SerializedName("id_user")
+    val idUser : String
 )

@@ -7,48 +7,72 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.picodiploma.kantinapp.MainActivity
 import com.dicoding.picodiploma.kantinapp.R
+import com.dicoding.picodiploma.kantinapp.databinding.ListPelangganBinding
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
+import com.dicoding.picodiploma.kantinapp.utils.PelangganDiff
 
-class ListPelangganAdapter (private val pelangganList : ArrayList<PelangganData>) : RecyclerView.Adapter<ListPelangganAdapter.PelangganViewHolder>() {
+class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganViewHolder>() {
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var onItemClickCallback : OnItemClickCallback
     private val preferencesName = "kantinApp"
-    private val userKey = "key_user"
+    private val namaPelanggan = "key_nama_pelanggan"
+    private var list = arrayListOf<PelangganData>()
 
-    inner class PelangganViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val namaPelanggan : TextView = itemView.findViewById(R.id.nama_pelanggan)
+    interface OnItemClickCallback {
+        fun setItemClicked(data : PelangganData)
+    }
+
+    fun setonItemClickCallback(onItemClickCallback : OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    fun listPelanggan(array : ArrayList<PelangganData>){
+        val diffCallback = PelangganDiff(this.list, array)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
+        diffResult.dispatchUpdatesTo(this)
+
+        this.list = array
+    }
+
+    inner class PelangganViewHolder(private val binding: ListPelangganBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind (pelanggan : PelangganData){
+            binding.apply {
+                namaPelanggan.text = pelanggan.namaPelanggan
+
+                val id = pelanggan.idUser
+                sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+                saveNamaPelanggan(id)
+            }
+
+            itemView.setOnClickListener {
+                onItemClickCallback.setItemClicked(pelanggan)
+            }
+        }
 
         val context = itemView.context
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PelangganViewHolder {
-        return PelangganViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_pelanggan, parent, false))
+        return PelangganViewHolder(ListPelangganBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: PelangganViewHolder, position: Int) {
-        val item = pelangganList[position]
+        holder.bind(list[position])
 
-        holder.namaPelanggan.text = item.namaPelanggan
-
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, MainActivity::class.java)
-
-            sharedPreferences = holder.context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
-            saveNamaPelanggan(item.namaPelanggan)
-
-            holder.itemView.context.startActivity(intent)
-        }
     }
 
     private fun saveNamaPelanggan(customerName : String) {
         val name : SharedPreferences.Editor = sharedPreferences.edit()
 
-        name.putString(userKey, customerName)
+        name.putString(namaPelanggan, customerName)
         name.apply()
     }
 
-    override fun getItemCount(): Int = pelangganList.size
+    override fun getItemCount(): Int = list.size
 
 }

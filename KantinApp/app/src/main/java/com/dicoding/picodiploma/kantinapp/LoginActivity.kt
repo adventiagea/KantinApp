@@ -22,7 +22,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginVM : LoginViewModel
     private lateinit var sharedPreferences: SharedPreferences
     private val preferencesName = "kantinApp"
-    private val userKey = "key_user"
+    private val userKey = "key_username"
+    private val idKey = "key_id_user"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
     private fun idLogin(id : Int) {
         val user : SharedPreferences.Editor = sharedPreferences.edit()
 
-        user.putInt(userKey, id)
+        user.putInt(idKey, id)
         user.apply()
     }
 
