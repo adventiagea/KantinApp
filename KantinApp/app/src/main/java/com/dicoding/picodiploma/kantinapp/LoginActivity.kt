@@ -42,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
                     if (it != null){
                         if (usernameEt == it.username && passwordEt == it.password){
                             userLogin(usernameEt)
+                            idLogin(it.idUser)
 
                             val intent = Intent(this, ListPelangganActivity::class.java)
                             startActivity(intent)
@@ -67,11 +68,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun intentToList() {
-        val intent = Intent(this, ListPelangganActivity::class.java)
-        startActivity(intent)
+    private fun idLogin(id : Int) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
 
-        Toast.makeText(this, "Selamat Datang!", Toast.LENGTH_SHORT).show()
+        user.putInt(userKey, id)
+        user.apply()
     }
 
     private fun userLogin(username : String) {
