@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.JsonReader
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -39,7 +40,9 @@ class LoginActivity : AppCompatActivity() {
                 loginVM.setUser(usernameEt)
                 loginVM.getUser().observe(this,{
                     if (it != null){
-                        if (it.username == usernameEt && it.password == passwordEt){
+                        if (usernameEt == it.username && passwordEt == it.password){
+                            userLogin(usernameEt)
+
                             val intent = Intent(this, ListPelangganActivity::class.java)
                             startActivity(intent)
 
@@ -54,16 +57,21 @@ class LoginActivity : AppCompatActivity() {
 
             }
             else {
-                Toast.makeText(this, "Silahkan masukkan username dan password!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Masukkan username dan password!", Toast.LENGTH_SHORT).show()
             }
-
-            userLogin(usernameEt)
         }
 
         loginBinding.registerButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun intentToList() {
+        val intent = Intent(this, ListPelangganActivity::class.java)
+        startActivity(intent)
+
+        Toast.makeText(this, "Selamat Datang!", Toast.LENGTH_SHORT).show()
     }
 
     private fun userLogin(username : String) {

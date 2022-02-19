@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface ApiClient {
     @GET("user/get_user_detail.php")
-    fun findUser(@Query("username")username : String) : Call<UserData>
+    fun findUser(@Query("username") username : String) : Call<UserData>
 
     @GET("pelanggan/get_all_pelanggan.php")
     fun allPelanggan() : Call<ArrayList<PelangganData>>

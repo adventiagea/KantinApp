@@ -4,9 +4,13 @@ import androidx.annotation.NonNull
 import com.google.gson.annotations.SerializedName
 
 data class UserData(
-    @NonNull
-    val username : String,
+    @SerializedName("id_user")
+    val idUser : Int,
+
     val password : String,
+
+    val username : String,
+
     @SerializedName("nama_kantin")
     val namaKantin : String
 )
