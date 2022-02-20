@@ -39,7 +39,7 @@ class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganV
         fun bind (pelanggan : PelangganData){
             binding.apply {
                 val nama = pelanggan.namaPelanggan
-                val id = pelanggan.idUser
+                val id = pelanggan.idPelanggan
 
                 namaPelanggan.text = nama
 

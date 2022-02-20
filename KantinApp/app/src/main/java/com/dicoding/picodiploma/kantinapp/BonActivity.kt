@@ -37,6 +37,7 @@ class BonActivity : AppCompatActivity() {
 
         adapter = ListBonAdapter()
 
+
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ListBonViewModel::class.java]
 
         viewModel.setBon(getIdPelanggan().toString(), getIdUser())
@@ -108,7 +109,7 @@ class BonActivity : AppCompatActivity() {
     }
 
     private fun notFound() {
-        Toast.makeText(this, "Tidak ditemukan!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"${getIdPelanggan()}, ${getIdUser()}", Toast.LENGTH_SHORT).show()
     }
 
     private fun getIdUser() : Int = sharedPreferences.getInt(idKey, 0)
