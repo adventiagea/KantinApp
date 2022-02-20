@@ -26,8 +26,7 @@
         <activity
             android:name=".EditBonActivity"
             android:exported="false"
-            android:label="@string/edit_transaksi"
-            android:theme="@style/Theme.KantinApp.NoActionBar" />
+            android:label="@string/edit_transaksi" />
         <activity
             android:name=".PelangganActivity"
             android:exported="true"

@@ -14,6 +14,7 @@ import com.dicoding.picodiploma.kantinapp.adapter.ListBonAdapter
 import com.dicoding.picodiploma.kantinapp.adapter.ListBonDetailAdapter
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityDetailBonBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
+import com.dicoding.picodiploma.kantinapp.viewmodel.BonTanggalViewModel
 import com.dicoding.picodiploma.kantinapp.viewmodel.ListBonViewModel
 import java.lang.StringBuilder
 import kotlin.system.exitProcess
@@ -21,7 +22,7 @@ import kotlin.system.exitProcess
 class DetailBonActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBonBinding
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var viewModel : ListBonViewModel
+    private lateinit var viewModel : BonTanggalViewModel
     private lateinit var adapter: ListBonDetailAdapter
     private val preferencesName = "kantinApp"
     private val idPelanggan = "key_id_pelanggan"
@@ -41,10 +42,10 @@ class DetailBonActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         adapter = ListBonDetailAdapter()
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ListBonViewModel::class.java]
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[BonTanggalViewModel::class.java]
 
 
-        viewModel.setBon(getIdPelanggan().toString(), getIdUser())
+        viewModel.setBon(getIdPelanggan().toString(), getIdUser(), getTanggal().toString())
 
         viewModel.getBon().observe(this, {
             if (it != null){
@@ -66,7 +67,7 @@ class DetailBonActivity : AppCompatActivity() {
 
     private fun getIdPelanggan() : String? = sharedPreferences.getString(idPelanggan, null)
 
-    private fun getTanggal() : String? = sharedPreferences.getString(keyTanggal, null)
+    private fun getTanggal() : String = sharedPreferences.getString(keyTanggal, null).toString()
 
     private fun clearTanggal(){
         val value : SharedPreferences.Editor = sharedPreferences.edit()

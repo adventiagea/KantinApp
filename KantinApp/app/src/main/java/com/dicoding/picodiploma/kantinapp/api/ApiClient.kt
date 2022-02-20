@@ -26,7 +26,14 @@ interface ApiClient {
     @GET("bon/get_all_bon_where_nama_iduser.php")
     fun showBon(
         @Query("id_pelanggan") id_pelanggan : Int,
+        @Query("id_user") id_user : Int
+    ): Call<BonArray>
+
+    @GET("bon/get_all_bon_where_nama_iduser_tanggal.php")
+    fun showBonWhenTanggal(
+        @Query("id_pelanggan") id_pelanggan : Int,
         @Query("id_user") id_user : Int,
+        @Query("tanggal") tanggal: String
     ): Call<BonArray>
 
     @FormUrlEncoded
@@ -43,6 +50,19 @@ interface ApiClient {
         @Field("password") id_user: String,
         @Field("nama_kantin") nama_kantin: String
     ): Call<UserData>
+
+    @FormUrlEncoded
+    @POST("bon/update_bon.php")
+    fun updateBon(
+        @Field("id_bon") id_bon: String,
+        @Field("tanggal") tanggal: String,
+        @Field("menu") menu: String,
+        @Field("jumlah") jumlah: Int,
+        @Field("harga_satuan") harga_satuan: Int,
+        @Field("harga_total") harga_total: Int,
+        @Field("id_pelanggan") id_pelanggan: Int,
+        @Field("id_user") id_user: Int
+    ): Call<BonData>
 
     @FormUrlEncoded
     @POST("bon/create_bon.php")

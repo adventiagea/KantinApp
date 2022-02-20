@@ -1,11 +1,14 @@
 package com.dicoding.picodiploma.kantinapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.dicoding.picodiploma.kantinapp.EditBonActivity
+import com.dicoding.picodiploma.kantinapp.EditNamaActivity
 import com.dicoding.picodiploma.kantinapp.R
 import com.dicoding.picodiploma.kantinapp.databinding.ListTransaksiBinding
 import com.dicoding.picodiploma.kantinapp.databinding.ListTransaksiDetailBinding
@@ -39,6 +42,12 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                 totalDetail.text = total.toString()
                 pembayaranDetail.text = pembayaran
 
+                edit.setOnClickListener {
+                    val intent = Intent(context, EditBonActivity::class.java)
+
+                    context.startActivity(intent)
+                }
+
                 //saveTanggalTransaksi(tanggal)
 
                 /*
@@ -55,6 +64,8 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                  */
             }
         }
+
+        val context = itemView.context
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailBonViewHolder {
