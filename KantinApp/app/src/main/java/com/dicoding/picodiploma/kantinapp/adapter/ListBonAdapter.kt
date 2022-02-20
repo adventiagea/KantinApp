@@ -39,19 +39,19 @@ class ListBonAdapter : RecyclerView.Adapter<ListBonAdapter.TransaksiViewHolder>(
         fun bind (bon : BonData){
             binding.apply {
                 val tanggal = bon.tanggal
-                val total = bon.hargaTotal.toString()
-                val pembayaran = bon.pembayaran.toString()
+                val total = bon.hargaTotal
+                val pembayaran = bon.pembayaran
                 val id = bon.idBon
 
                 tanggalTransaksi.text = tanggal
-                totalTransaksi.text = total
-                pembayaranTransaksi.text = pembayaran
+                totalTransaksi.text = total.toString()
+                pembayaranTransaksi.text = pembayaran.toString()
 
                 sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
                 if (id != null) {
                     saveIdTransaksi(id)
                 }
-                saveTanggalTransaksi(tanggal)
+                saveTanggalTransaksi(tanggalTransaksi.text.toString())
             }
 
             itemView.setOnClickListener {
@@ -79,11 +79,11 @@ class ListBonAdapter : RecyclerView.Adapter<ListBonAdapter.TransaksiViewHolder>(
         name.apply()
     }
 
+
     private fun saveTanggalTransaksi(tanggal : String) {
         val name : SharedPreferences.Editor = sharedPreferences.edit()
 
         name.putString(keyTanggal, tanggal)
         name.apply()
     }
-
 }

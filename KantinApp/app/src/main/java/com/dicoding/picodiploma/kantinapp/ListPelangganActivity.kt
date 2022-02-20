@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.KeyEvent
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +15,7 @@ import com.dicoding.picodiploma.kantinapp.adapter.ListPelangganAdapter
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityListPelangganBinding
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.viewmodel.ListPelangganViewModel
+import kotlin.system.exitProcess
 
 class ListPelangganActivity : AppCompatActivity() {
     private lateinit var listPelangganBinding: ActivityListPelangganBinding
@@ -22,6 +25,7 @@ class ListPelangganActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private val preferencesName = "kantinApp"
     private val idKey = "key_id_user"
+    private var clickedValue: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,5 +100,18 @@ class ListPelangganActivity : AppCompatActivity() {
             if (input.isEmpty()) return
             viewModel.setPelanggan(input, getIdUser())
         }
+    }
+
+    override fun onBackPressed() {
+        if (clickedValue) {
+
+            this.finishAffinity()
+            exitProcess(0)
+            return
+        }
+        this.clickedValue = true
+        val exitText = "Press back again to exit application"
+        Toast.makeText(this, exitText, Toast.LENGTH_SHORT).show()
+        Handler(Looper.getMainLooper()).postDelayed({ clickedValue = false }, 2000)
     }
 }

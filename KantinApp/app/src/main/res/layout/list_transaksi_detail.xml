@@ -9,7 +9,7 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/menu_detail"
+        android:id="@+id/menu_detail_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Menu  :"
@@ -20,50 +20,121 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/jumlah_detail"
+        android:id="@+id/menu_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:text="Menu  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/menu_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/menu_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/menu_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/jumlah_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:text="Jumlah  :"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/menu_detail"
-        app:layout_constraintTop_toBottomOf="@+id/menu_detail"
+        app:layout_constraintStart_toStartOf="@+id/menu_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/menu_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/jumlah_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:text="Jumlah  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/jumlah_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/jumlah_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/jumlah_detail_title"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/harga_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Harga  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/jumlah_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/jumlah_detail_title"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/harga_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
         android:text="Harga  :"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/jumlah_detail"
-        app:layout_constraintTop_toBottomOf="@+id/jumlah_detail"
+        app:layout_constraintBottom_toBottomOf="@+id/harga_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/harga_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/jumlah_detail_title"
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/Total_detail"
+        android:id="@+id/total_detail_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:text="Total  :"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/harga_detail"
-        app:layout_constraintTop_toBottomOf="@+id/harga_detail"
+        app:layout_constraintStart_toStartOf="@+id/harga_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/harga_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/total_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:text="-"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/total_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/total_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/total_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/pembayaran_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Pembayaran  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/total_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/total_detail_title"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/pembayaran_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pembayaran  :"
+        android:layout_marginStart="7dp"
+        android:text="-"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/Total_detail"
-        app:layout_constraintTop_toBottomOf="@+id/Total_detail"
+        app:layout_constraintBottom_toBottomOf="@+id/pembayaran_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/pembayaran_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/pembayaran_detail_title"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.dicoding.picodiploma.kantinapp.api
 
+import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.model.array.PelangganArray
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.model.UserData
@@ -42,4 +43,16 @@ interface ApiClient {
         @Field("password") id_user: String,
         @Field("nama_kantin") nama_kantin: String
     ): Call<UserData>
+
+    @FormUrlEncoded
+    @POST("bon/create_bon.php")
+    fun addBon(
+        @Field("tanggal") tanggal: String,
+        @Field("menu") menu: String,
+        @Field("jumlah") jumlah: Int,
+        @Field("harga_satuan") harga_satuan: Int,
+        @Field("harga_total") harga_total: Int,
+        @Field("id_pelanggan") id_pelanggan: Int,
+        @Field("id_user") id_user: Int
+    ): Call<BonData>
 }

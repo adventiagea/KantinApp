@@ -12,13 +12,13 @@ class TransaksiDiff(
     override fun getNewListSize(): Int = new.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return old[oldItemPosition].tanggal == new[newItemPosition].tanggal
+        return old[oldItemPosition].idBon == new[newItemPosition].idBon
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val oldPosition = old[oldItemPosition]
         val newPosition = new[newItemPosition]
 
-        return oldPosition.tanggal == newPosition.tanggal
+        return oldPosition.idBon == newPosition.idBon
     }
 }

@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".DetailBonActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/detail_bon_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
         tools:listitem="@layout/list_transaksi_detail"
         app:layout_constraintBottom_toTopOf="@+id/total_transaksi_user"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,13 +21,14 @@
         android:id="@+id/total_transaksi_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="16dp"
         android:text="TOTAL BON :"
         android:textColor="#FF0000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText" />
 
@@ -34,13 +37,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="@string/default_harga"
+        android:text="-"
         android:textColor="#FF0000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/total_transaksi_user"
         app:layout_constraintStart_toEndOf="@+id/total_transaksi_user"
-        app:layout_constraintTop_toTopOf="@+id/total_transaksi_user" />
+        app:layout_constraintTop_toTopOf="@+id/total_transaksi_user"
+        tools:ignore="HardcodedText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
