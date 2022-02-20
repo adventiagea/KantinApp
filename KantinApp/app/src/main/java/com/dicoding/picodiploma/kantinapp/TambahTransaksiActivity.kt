@@ -23,41 +23,7 @@ class TambahTransaksiActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Tambah Transaksi"
 
-        numberPicker()
         tanggal()
-        jumlah()
-        harga()
-
-    }
-
-    private fun harga() {
-        TODO("Not yet implemented")
-    }
-
-    private fun jumlah() {
-        binding.pilihJumlah.setOnClickListener {
-
-        }
-    }
-
-    private fun numberPicker() {
-        val numberPicker = NumberPicker(this)
-        val layoutParams = LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-
-        numberPicker.layoutParams = layoutParams
-
-        numberPicker.minValue = 0
-        numberPicker.maxValue = 100
-        numberPicker.wrapSelectorWheel = true
-
-        numberPicker.setOnValueChangedListener { _, _, newVal ->
-            val text = binding.newJumlahValue
-            text.text = newVal.toString()
-        }
-        binding.constraintLayout2.addView(numberPicker)
 
     }
 
@@ -72,7 +38,7 @@ class TambahTransaksiActivity : AppCompatActivity() {
             }
         }
 
-        binding.pilihTanggal.setOnClickListener {
+        binding.tanggalIc.setOnClickListener {
             DatePickerDialog(
                 this@TambahTransaksiActivity,
                 dateSetListener,
@@ -86,6 +52,6 @@ class TambahTransaksiActivity : AppCompatActivity() {
     private fun updateDateInView() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.ROOT)
-        binding.newTanggalValue.text = sdf.format(cal.time)
+        binding.tanggalDetail.text = sdf.format(cal.time)
     }
 }

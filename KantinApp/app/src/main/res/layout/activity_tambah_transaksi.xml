@@ -5,201 +5,197 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:padding="10dp"
     tools:context=".TambahTransaksiActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:padding="15dp"
-        android:background="@drawable/outlined_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/new_tanggal_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tanggal_title"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/pilih_tanggal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button"
-            android:fontFamily="@font/lato_regular"
-            android:text="@string/ubah_tanggal"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/new_tanggal_value"
-            app:layout_constraintTop_toBottomOf="@+id/new_tanggal_value" />
-
-        <TextView
-            android:id="@+id/new_tanggal_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/default_tanggal"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/new_tanggal_title"
-            app:layout_constraintTop_toBottomOf="@+id/new_tanggal_title" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/outlined_button"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-        <TextView
-            android:id="@+id/new_menu_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/menu_title"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <EditText
-            android:id="@+id/ubah_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="@font/lato_regular"
-            android:hint="@string/input_harga"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:textColor="@color/black"
-            android:textColorHint="#80000000"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/new_menu_title"
-            app:layout_constraintTop_toBottomOf="@+id/new_menu_title" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/outlined_button"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
-
-        <TextView
-            android:id="@+id/new_jumlah_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/jumlah_title"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/new_jumlah_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/default_jumlah"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/new_jumlah_title"
-            app:layout_constraintTop_toBottomOf="@+id/new_jumlah_title" />
-
-        <Button
-            android:id="@+id/pilih_jumlah"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button"
-            android:fontFamily="@font/lato_regular"
-            android:text="@string/ubah_jumlah"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/new_jumlah_value"
-            app:layout_constraintTop_toBottomOf="@+id/new_jumlah_value" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/outlined_button"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-        <TextView
-            android:id="@+id/new_harga_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/harga_title"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <EditText
-            android:id="@+id/ubah_harga"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="@font/lato_regular"
-            android:hint="@string/input_harga"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:textColor="@color/black"
-            android:textColorHint="#80000000"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/new_harga_title"
-            app:layout_constraintTop_toBottomOf="@+id/new_harga_title" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/simpan_perubahan_button"
+    <TextView
+        android:id="@+id/tanggal_detail_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45sp"
+        android:text="Tanggal  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tanggal_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:text="--/--/----"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tanggal_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/tanggal_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/tanggal_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <ImageButton
+        android:id="@+id/tanggal_ic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="7dp"
+        android:background="@color/white"
+        android:src="@drawable/edit_calendar"
+        app:layout_constraintBottom_toBottomOf="@+id/tanggal_detail"
+        app:layout_constraintStart_toEndOf="@+id/tanggal_detail"
+        app:layout_constraintTop_toTopOf="@+id/tanggal_detail"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/menu_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Menu  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/tanggal_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/tanggal_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/menu_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:fontFamily="@font/lato_regular"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/menu_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/menu_detail_title"
+        app:layout_constraintStart_toStartOf="@+id/jumlah_detail"
+        app:layout_constraintTop_toTopOf="@+id/menu_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/jumlah_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Jumlah  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/menu_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/menu_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/jumlah_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:ems="3"
+        android:fontFamily="@font/lato_regular"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/jumlah_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/jumlah_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/jumlah_detail_title"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/harga_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Harga  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/jumlah_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/jumlah_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/harga_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:fontFamily="@font/lato_regular"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/harga_detail_title"
+        app:layout_constraintStart_toStartOf="@+id/jumlah_detail"
+        app:layout_constraintTop_toBottomOf="@+id/jumlah_detail_title"
+        tools:ignore="HardcodedText,LabelFor" />
+
+    <TextView
+        android:id="@+id/total_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Total  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/harga_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/harga_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/total_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:text="-"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/total_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/total_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/total_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/pembayaran_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Pembayaran  :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/total_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/total_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/pembayaran_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:text="-"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/pembayaran_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/pembayaran_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/pembayaran_detail_title"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65sp"
         android:background="@drawable/button"
         android:fontFamily="@font/lato_regular"
         android:paddingStart="25dp"
@@ -207,9 +203,9 @@
         android:text="@string/selesai"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pembayaran_detail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

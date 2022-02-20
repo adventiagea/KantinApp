@@ -44,6 +44,14 @@ interface ApiClient {
     ): Call<PelangganData>
 
     @FormUrlEncoded
+    @POST("pelanggan/update_pelanggan.php")
+    fun updatePelanggan(
+        @Field("id_pelanggan") id_pelanggan: Int,
+        @Field("id_user") id_user: Int,
+        @Field("nama_pelanggan") nama_pelanggan: String
+    ): Call<PelangganData>
+
+    @FormUrlEncoded
     @POST("user/create_user.php")
     fun addUser(
         @Field("username") nama_pelanggan: String,
