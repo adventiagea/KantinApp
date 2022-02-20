@@ -1,10 +1,10 @@
 package com.dicoding.picodiploma.kantinapp.api
 
-import com.dicoding.picodiploma.kantinapp.model.PelangganArray
+import com.dicoding.picodiploma.kantinapp.model.array.PelangganArray
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.model.UserData
+import com.dicoding.picodiploma.kantinapp.model.array.BonArray
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiClient {
@@ -21,6 +21,12 @@ interface ApiClient {
         @Query("nama_pelanggan") nama_pelanggan : String,
         @Query("id_user") id_user : Int
     ): Call<PelangganArray>
+
+    @GET("bon/get_all_bon_where_nama_iduser.php")
+    fun showBon(
+        @Query("id_pelanggan") id_pelanggan : Int,
+        @Query("id_user") id_user : Int,
+    ): Call<BonArray>
 
     @FormUrlEncoded
     @POST("pelanggan/create_pelanggan.php")

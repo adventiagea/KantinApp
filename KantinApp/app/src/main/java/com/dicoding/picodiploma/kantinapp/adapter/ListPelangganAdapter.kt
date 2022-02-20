@@ -1,16 +1,11 @@
 package com.dicoding.picodiploma.kantinapp.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.picodiploma.kantinapp.MainActivity
-import com.dicoding.picodiploma.kantinapp.R
 import com.dicoding.picodiploma.kantinapp.databinding.ListPelangganBinding
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.utils.PelangganDiff
@@ -19,6 +14,7 @@ class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganV
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var onItemClickCallback : OnItemClickCallback
     private val preferencesName = "kantinApp"
+    private val idPelanggan = "key_id_pelanggan"
     private val namaPelanggan = "key_nama_pelanggan"
     private var list = arrayListOf<PelangganData>()
 
@@ -42,11 +38,14 @@ class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganV
     inner class PelangganViewHolder(private val binding: ListPelangganBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind (pelanggan : PelangganData){
             binding.apply {
-                namaPelanggan.text = pelanggan.namaPelanggan
-
+                val nama = pelanggan.namaPelanggan
                 val id = pelanggan.idUser
+
+                namaPelanggan.text = nama
+
                 sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
-                saveIdPelanggan(id)
+                saveIdPelanggan(id.toString())
+                saveNamePelanggan(nama)
             }
 
             itemView.setOnClickListener {
@@ -66,10 +65,17 @@ class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganV
 
     }
 
-    private fun saveIdPelanggan(customerName : Int) {
+    private fun saveIdPelanggan(customerId : String) {
         val name : SharedPreferences.Editor = sharedPreferences.edit()
 
-        name.putInt(namaPelanggan, customerName)
+        name.putString(idPelanggan, customerId)
+        name.apply()
+    }
+
+    private fun saveNamePelanggan(customerName : String) {
+        val name : SharedPreferences.Editor = sharedPreferences.edit()
+
+        name.putString(namaPelanggan, customerName)
         name.apply()
     }
 

@@ -10,6 +10,7 @@
     android:layout_marginTop="7dp"
     android:layout_marginBottom="7dp"
     android:background="@color/white"
+    android:visibility="visible"
     android:padding="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,21 +39,19 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/jumlah_transaksi"
+            android:id="@+id/total_transaksi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/jumlah"
+            android:text="@string/default_harga"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/harga_transaksi"
-            app:layout_constraintHorizontal_bias="0.433"
+            app:layout_constraintEnd_toStartOf="@+id/pembayaran_transaksi"
             app:layout_constraintStart_toEndOf="@+id/tanggal_transaksi"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/harga_transaksi"
+            android:id="@+id/pembayaran_transaksi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"

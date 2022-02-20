@@ -5,34 +5,37 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.KantinApp">
+        android:theme="@style/Theme.KantinApp"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".DetailBonActivity"
+            android:exported="false" />
         <activity
             android:name=".EditNamaActivity"
-            android:label="@string/edit_nama"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/edit_nama" />
         <activity
             android:name=".TambahTransaksiActivity"
-            android:label="@string/tambah_transaksi"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/tambah_transaksi" />
         <activity
-            android:name=".EditTransaksiActivity"
+            android:name=".EditBonActivity"
             android:exported="false"
             android:label="@string/edit_transaksi"
             android:theme="@style/Theme.KantinApp.NoActionBar" />
         <activity
             android:name=".PelangganActivity"
-            android:label="@string/new_pelanggan"
-            android:exported="true" />
+            android:exported="true"
+            android:label="@string/new_pelanggan" />
         <activity
             android:name=".ListPelangganActivity"
-            android:label="@string/cari_pelanggan"
-            android:exported="true" />
+            android:exported="true"
+            android:label="@string/cari_pelanggan" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true"
@@ -48,7 +51,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".BonActivity"
             android:exported="true" />
     </application>
 

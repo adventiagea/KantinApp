@@ -6,20 +6,13 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.kantinapp.adapter.ListPelangganAdapter
-import com.dicoding.picodiploma.kantinapp.api.ApiBase
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityListPelangganBinding
-import com.dicoding.picodiploma.kantinapp.databinding.ListPelangganBinding
-import com.dicoding.picodiploma.kantinapp.model.PelangganArray
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.viewmodel.ListPelangganViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class ListPelangganActivity : AppCompatActivity() {
     private lateinit var listPelangganBinding: ActivityListPelangganBinding
@@ -46,7 +39,7 @@ class ListPelangganActivity : AppCompatActivity() {
             pelangganRv.adapter = adapter
             adapter.setonItemClickCallback(object : ListPelangganAdapter.OnItemClickCallback {
                 override fun setItemClicked(data: PelangganData) {
-                    val intent = Intent(this@ListPelangganActivity, MainActivity::class.java)
+                    val intent = Intent(this@ListPelangganActivity, BonActivity::class.java)
 
                     startActivity(intent)
                 }
@@ -96,18 +89,11 @@ class ListPelangganActivity : AppCompatActivity() {
         Toast.makeText(this, "Pelanggan tidak ditemukan!", Toast.LENGTH_SHORT).show()
     }
 
-    private fun searching(){
-        val input = listPelangganBinding.etSearch.text.toString()
-
-        Toast.makeText(this, "Mencari pelanggan ${input}!", Toast.LENGTH_SHORT).show()
-    }
-
     private fun search(){
         listPelangganBinding.apply {
             val input = etSearch.text.toString()
 
             if (input.isEmpty()) return
-            searching()
             viewModel.setPelanggan(input, getIdUser())
         }
     }
