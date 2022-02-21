@@ -50,6 +50,8 @@ class BonActivity : AppCompatActivity() {
 
                     adapter.listTransaksi(it)
 
+
+
                     adapter.setonItemClickCallback(object : ListBonAdapter.OnItemClickCallback{
                         override fun setItemClicked(data: BonData) {
                             val intent = Intent(this@BonActivity, DetailBonActivity::class.java)
@@ -67,6 +69,42 @@ class BonActivity : AppCompatActivity() {
                 notFound()
             }
         })
+
+        binding.swipeDown.setOnRefreshListener {
+            viewModel.setBon(getIdPelanggan().toString(), getIdUser())
+
+            viewModel.getBon().observe(this, {
+                if (it != null){
+                    binding.apply {
+                        bonRv.layoutManager = LinearLayoutManager(this@BonActivity)
+                        bonRv.setHasFixedSize(true)
+                        bonRv.adapter = adapter
+
+                        adapter.listTransaksi(it)
+
+
+
+                        adapter.setonItemClickCallback(object : ListBonAdapter.OnItemClickCallback{
+                            override fun setItemClicked(data: BonData) {
+                                val intent = Intent(this@BonActivity, DetailBonActivity::class.java)
+                                intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, data.tanggal)
+
+                                startActivity(intent)
+                            }
+
+                        })
+
+
+                    }
+                }
+                else {
+                    notFound()
+                }
+            })
+
+            binding.swipeDown.isRefreshing = false
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
