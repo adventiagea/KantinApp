@@ -26,10 +26,7 @@ class DetailBonActivity : AppCompatActivity() {
     private lateinit var adapter: ListBonDetailAdapter
     private val preferencesName = "kantinApp"
     private val idPelanggan = "key_id_pelanggan"
-    private val namaPelanggan = "key_nama_pelanggan"
-    private val keyTanggal = "key_tanggal"
     private val idKey = "key_id_user"
-    private var clickedValue: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +41,13 @@ class DetailBonActivity : AppCompatActivity() {
         adapter = ListBonDetailAdapter()
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[BonTanggalViewModel::class.java]
 
+        val tanggal = intent.getStringExtra(EXTRA_TANGGAL)
+        val bundle = Bundle()
+        bundle.getString(EXTRA_TANGGAL, tanggal)
 
-        viewModel.setBon(getIdPelanggan().toString(), getIdUser(), getTanggal().toString())
+        Toast.makeText(this, tanggal, Toast.LENGTH_SHORT).show()
+
+        viewModel.setBon(getIdPelanggan().toString(), getIdUser(), tanggal!!)
 
         viewModel.getBon().observe(this, {
             if (it != null){
@@ -56,7 +58,7 @@ class DetailBonActivity : AppCompatActivity() {
 
                     adapter.listTransaksi(it)
 
-                    supportActionBar?.title = getTanggal()
+                    supportActionBar?.title = tanggal
 
                 }
             }
@@ -67,18 +69,8 @@ class DetailBonActivity : AppCompatActivity() {
 
     private fun getIdPelanggan() : String? = sharedPreferences.getString(idPelanggan, null)
 
-    private fun getTanggal() : String = sharedPreferences.getString(keyTanggal, null).toString()
-
-    private fun clearTanggal(){
-        val value : SharedPreferences.Editor = sharedPreferences.edit()
-
-        value.clear()
-        value.apply()
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return super.onSupportNavigateUp()
+    companion object{
+        const val EXTRA_TANGGAL = "extra_tanggal"
     }
 
 }

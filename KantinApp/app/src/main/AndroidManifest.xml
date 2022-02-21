@@ -14,7 +14,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".DetailBonActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory = "true"/>
         <activity
             android:name=".EditNamaActivity"
             android:exported="false"
@@ -51,7 +52,7 @@
         </activity>
         <activity
             android:name=".BonActivity"
-            android:exported="true" />
+            android:exported="true"/>
     </application>
 
 </manifest>

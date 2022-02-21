@@ -50,8 +50,8 @@ class ListBonAdapter : RecyclerView.Adapter<ListBonAdapter.TransaksiViewHolder>(
                 sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
                 if (id != null) {
                     saveIdTransaksi(id)
+                    saveTanggalTransaksi(tanggal)
                 }
-                saveTanggalTransaksi(tanggalTransaksi.text.toString())
             }
 
             itemView.setOnClickListener {

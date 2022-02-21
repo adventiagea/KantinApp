@@ -54,6 +54,7 @@ class BonActivity : AppCompatActivity() {
                     adapter.setonItemClickCallback(object : ListBonAdapter.OnItemClickCallback{
                         override fun setItemClicked(data: BonData) {
                             val intent = Intent(this@BonActivity, DetailBonActivity::class.java)
+                            intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, data.tanggal)
 
                             startActivity(intent)
                         }

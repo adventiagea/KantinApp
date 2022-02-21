@@ -2,6 +2,7 @@ package com.dicoding.picodiploma.kantinapp.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -42,11 +43,15 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                 totalDetail.text = total.toString()
                 pembayaranDetail.text = pembayaran
 
+                //sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+
                 edit.setOnClickListener {
                     val intent = Intent(context, EditBonActivity::class.java)
 
                     context.startActivity(intent)
                 }
+
+
 
                 //saveTanggalTransaksi(tanggal)
 
@@ -77,4 +82,5 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
     }
 
     override fun getItemCount(): Int = list.size
+
 }
