@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityEditNamaBinding
-import com.dicoding.picodiploma.kantinapp.databinding.ActivityTambahTransaksiBinding
 import com.dicoding.picodiploma.kantinapp.viewmodel.EditNamaPelangganViewModel
 import java.lang.StringBuilder
 

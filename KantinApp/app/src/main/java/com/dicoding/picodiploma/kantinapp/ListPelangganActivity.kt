@@ -81,7 +81,7 @@ class ListPelangganActivity : AppCompatActivity() {
         val addFAB = listPelangganBinding.addNewCustomerFab
 
         addFAB.setOnClickListener {
-            val intent = Intent(this, PelangganActivity::class.java)
+            val intent = Intent(this, TambahPelangganActivity::class.java)
 
             startActivity(intent)
         }

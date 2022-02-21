@@ -21,7 +21,7 @@
             android:exported="false"
             android:label="@string/edit_nama" />
         <activity
-            android:name=".TambahTransaksiActivity"
+            android:name=".TambahBonActivity"
             android:exported="false"
             android:label="@string/tambah_transaksi" />
         <activity
@@ -29,7 +29,7 @@
             android:exported="false"
             android:label="@string/edit_transaksi" />
         <activity
-            android:name=".PelangganActivity"
+            android:name=".TambahPelangganActivity"
             android:exported="true"
             android:label="@string/new_pelanggan" />
         <activity

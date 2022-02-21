@@ -27,5 +27,5 @@ data class BonData(
     var idUser : Int,
 
     @Nullable
-    var pembayaran : String?
+    var pembayaran : Int
 )

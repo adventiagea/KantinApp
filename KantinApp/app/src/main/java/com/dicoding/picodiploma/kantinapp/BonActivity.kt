@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -87,7 +86,7 @@ class BonActivity : AppCompatActivity() {
                 true
             }
             R.id.menu_tambah_transaksi -> {
-                val intent = Intent(this, TambahTransaksiActivity::class.java)
+                val intent = Intent(this, TambahBonActivity::class.java)
                 startActivity(intent)
 
                 true

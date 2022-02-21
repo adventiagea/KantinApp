@@ -69,7 +69,8 @@ interface ApiClient {
         @Field("harga_satuan") harga_satuan: Int,
         @Field("harga_total") harga_total: Int,
         @Field("id_pelanggan") id_pelanggan: Int,
-        @Field("id_user") id_user: Int
+        @Field("id_user") id_user: Int,
+        @Field("pembayaran") pembayaran: Int
     ): Call<BonData>
 
     @FormUrlEncoded
@@ -81,6 +82,7 @@ interface ApiClient {
         @Field("harga_satuan") harga_satuan: Int,
         @Field("harga_total") harga_total: Int,
         @Field("id_pelanggan") id_pelanggan: Int,
-        @Field("id_user") id_user: Int
+        @Field("id_user") id_user: Int,
+        @Field("pembayaran") pembayaran: Int
     ): Call<BonData>
 }

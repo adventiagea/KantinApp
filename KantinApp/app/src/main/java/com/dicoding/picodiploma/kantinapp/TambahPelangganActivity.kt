@@ -9,21 +9,21 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.kantinapp.api.ApiBase
-import com.dicoding.picodiploma.kantinapp.databinding.ActivityPelangganBinding
+import com.dicoding.picodiploma.kantinapp.databinding.ActivityTambahPelangganBinding
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PelangganActivity : AppCompatActivity() {
-    private lateinit var pelangganBinding: ActivityPelangganBinding
+class TambahPelangganActivity : AppCompatActivity() {
+    private lateinit var pelangganBinding: ActivityTambahPelangganBinding
     private lateinit var sharedPreferences: SharedPreferences
     private val preferencesName = "kantinApp"
     private val idKey = "key_id_user"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pelangganBinding = ActivityPelangganBinding.inflate(layoutInflater)
+        pelangganBinding = ActivityTambahPelangganBinding.inflate(layoutInflater)
         setContentView(pelangganBinding.root)
 
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)

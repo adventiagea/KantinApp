@@ -27,6 +27,7 @@ class DetailBonActivity : AppCompatActivity() {
     private val preferencesName = "kantinApp"
     private val idPelanggan = "key_id_pelanggan"
     private val idKey = "key_id_user"
+    private val keyTanggalDetail = "key_tanggal_detail"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +46,6 @@ class DetailBonActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.getString(EXTRA_TANGGAL, tanggal)
 
-        Toast.makeText(this, tanggal, Toast.LENGTH_SHORT).show()
-
         viewModel.setBon(getIdPelanggan().toString(), getIdUser(), tanggal!!)
 
         viewModel.getBon().observe(this, {
@@ -60,6 +59,23 @@ class DetailBonActivity : AppCompatActivity() {
 
                     supportActionBar?.title = tanggal
 
+                    adapter.setonItemClickCallback(object : ListBonDetailAdapter.OnItemClickCallback{
+                        override fun setItemClicked(data: BonData) {
+                            val intent = Intent(this@DetailBonActivity, EditBonActivity::class.java)
+                            intent.putExtra(EditBonActivity.EXTRA_TANGGAL, data.tanggal)
+                            intent.putExtra(EditBonActivity.EXTRA_MENU, data.menu)
+                            intent.putExtra(EditBonActivity.EXTRA_JUMLAH, data.jumlah)
+                            intent.putExtra(EditBonActivity.EXTRA_HARGA, data.hargaSatuan)
+                            intent.putExtra(EditBonActivity.EXTRA_TOTAL, data.hargaTotal)
+                            intent.putExtra(EditBonActivity.EXTRA_PEMBAYARAN, data.pembayaran)
+
+                            saveTanggal(data.tanggal)
+
+                            startActivity(intent)
+                        }
+
+                    })
+
                 }
             }
         })
@@ -68,6 +84,13 @@ class DetailBonActivity : AppCompatActivity() {
     private fun getIdUser() : Int = sharedPreferences.getInt(idKey, 0)
 
     private fun getIdPelanggan() : String? = sharedPreferences.getString(idPelanggan, null)
+
+    private fun saveTanggal(tanggal : String) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
+
+        user.putString(keyTanggalDetail, tanggal)
+        user.apply()
+    }
 
     companion object{
         const val EXTRA_TANGGAL = "extra_tanggal"

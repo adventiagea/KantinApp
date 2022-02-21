@@ -18,6 +18,18 @@ import com.dicoding.picodiploma.kantinapp.utils.TransaksiDiff
 
 class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBonViewHolder>(){
     private var list = arrayListOf<BonData>()
+    private lateinit var sharedPreferences: SharedPreferences
+    private val preferencesName = "kantinApp"
+    private val idBon = "key_id_bon"
+    private lateinit var onItemClickCallback : OnItemClickCallback
+
+    interface OnItemClickCallback {
+        fun setItemClicked(data : BonData)
+    }
+
+    fun setonItemClickCallback(onItemClickCallback : OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     fun listTransaksi(arrayList: ArrayList<BonData>) {
         val diffCallback = TransaksiDiff(this.list, arrayList)
@@ -43,7 +55,7 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                 totalDetail.text = total.toString()
                 pembayaranDetail.text = pembayaran
 
-                //sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+                sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
 
                 edit.setOnClickListener {
                     val intent = Intent(context, EditBonActivity::class.java)
@@ -51,9 +63,7 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                     context.startActivity(intent)
                 }
 
-
-
-                //saveTanggalTransaksi(tanggal)
+                idBon(bon.idBon!!)
 
                 /*
                 val value = map
@@ -79,6 +89,13 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
 
     override fun onBindViewHolder(holder: DetailBonViewHolder, position: Int) {
         holder.bind(list[position])
+    }
+
+    private fun idBon(id : Int) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
+
+        user.putInt(idBon, id)
+        user.apply()
     }
 
     override fun getItemCount(): Int = list.size

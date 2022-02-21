@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:padding="10dp"
-    tools:context=".EditBonActivity">
+    tools:context=".TambahBonActivity">
 
     <TextView
         android:id="@+id/tanggal_detail_title"
@@ -93,9 +93,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
         android:ems="3"
+        android:text="0"
         android:fontFamily="@font/lato_regular"
         android:importantForAutofill="no"
-        android:inputType="text"
+        android:inputType="number"
         android:padding="10dp"
         android:textColor="@color/black"
         android:textColorHint="#80000000"
@@ -123,10 +124,11 @@
         android:id="@+id/harga_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="0"
         android:ems="12"
         android:fontFamily="@font/lato_regular"
         android:importantForAutofill="no"
-        android:inputType="text"
+        android:inputType="number"
         android:padding="10dp"
         android:textColor="@color/black"
         android:textColorHint="#80000000"
@@ -150,13 +152,18 @@
         app:layout_constraintTop_toBottomOf="@+id/harga_detail_title"
         tools:ignore="HardcodedText" />
 
-    <TextView
+    <EditText
         android:id="@+id/total_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:text="-"
+        android:text="0"
+        android:ems="13"
+        android:fontFamily="@font/lato_regular"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:padding="10dp"
         android:textColor="@color/black"
+        android:textColorHint="#80000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/total_detail_title"
@@ -177,13 +184,18 @@
         app:layout_constraintTop_toBottomOf="@+id/total_detail_title"
         tools:ignore="HardcodedText" />
 
-    <TextView
+    <EditText
         android:id="@+id/pembayaran_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:text="-"
+        android:text="0"
+        android:ems="10"
+        android:fontFamily="@font/lato_regular"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:padding="10dp"
         android:textColor="@color/black"
+        android:textColorHint="#80000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/pembayaran_detail_title"
@@ -192,7 +204,7 @@
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65sp"
