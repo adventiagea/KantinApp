@@ -5,6 +5,7 @@ import com.dicoding.picodiploma.kantinapp.model.array.PelangganArray
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.model.UserData
 import com.dicoding.picodiploma.kantinapp.model.array.BonArray
+import com.dicoding.picodiploma.kantinapp.model.array.TotalArray
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -40,7 +41,7 @@ interface ApiClient {
     fun totalBonUser(
         @Query("id_user") id_user : Int,
         @Query("id_pelanggan") id_pelanggan : Int
-    ): Call<BonArray>
+    ): Call<TotalArray>
 
     @FormUrlEncoded
     @POST("pelanggan/create_pelanggan.php")

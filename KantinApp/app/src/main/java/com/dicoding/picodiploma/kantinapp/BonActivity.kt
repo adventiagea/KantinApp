@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.kantinapp.adapter.ListBonAdapter
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityBonBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
+import com.dicoding.picodiploma.kantinapp.model.TotalData
 import com.dicoding.picodiploma.kantinapp.viewmodel.ListBonViewModel
 
 class BonActivity : AppCompatActivity() {
@@ -61,8 +62,6 @@ class BonActivity : AppCompatActivity() {
 
                     adapter.listTransaksi(it)
 
-
-
                     adapter.setonItemClickCallback(object : ListBonAdapter.OnItemClickCallback{
                         override fun setItemClicked(data: BonData) {
                             val intent = Intent(this@BonActivity, DetailBonActivity::class.java)
@@ -80,6 +79,14 @@ class BonActivity : AppCompatActivity() {
             }
             else {
                 notFound()
+            }
+        })
+
+        viewModel.setTotalBon(getIdUser(), getIdPelanggan().toString())
+
+        viewModel.getTotalBon().observe(this, {
+            if (it != null){
+                binding.totalValue.text = it[0].total.toString()
             }
         })
 

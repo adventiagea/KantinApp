@@ -24,7 +24,7 @@ class DB_CONNECT {
         // import database connection variables
         require_once __DIR__ . '/db_config.php';
  
-        // Connecting to mysql database
+         // Connecting to mysql database
         $con = mysql_connect(DB_SERVER, DB_USER, DB_PASSWORD) or die(mysql_error());
  
         // Selecing database
