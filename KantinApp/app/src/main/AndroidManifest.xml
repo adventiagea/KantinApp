@@ -15,23 +15,28 @@
         <activity
             android:name=".DetailBonActivity"
             android:exported="false"
-            android:noHistory = "true"/>
+            android:noHistory = "true"
+            android:parentActivityName=".BonActivity"/>
         <activity
             android:name=".EditNamaActivity"
             android:exported="false"
-            android:label="@string/edit_nama" />
+            android:label="@string/edit_nama"
+            android:parentActivityName=".BonActivity"/>
         <activity
             android:name=".TambahBonActivity"
             android:exported="false"
-            android:label="@string/tambah_transaksi" />
+            android:label="@string/tambah_transaksi"
+            android:parentActivityName=".ListPelangganActivity"/>
         <activity
             android:name=".EditBonActivity"
             android:exported="false"
-            android:label="@string/edit_transaksi" />
+            android:label="@string/edit_transaksi"
+            android:parentActivityName=".DetailBonActivity"/>
         <activity
             android:name=".TambahPelangganActivity"
             android:exported="true"
-            android:label="@string/new_pelanggan" />
+            android:label="@string/new_pelanggan"
+            android:parentActivityName=".BonActivity"/>
         <activity
             android:name=".ListPelangganActivity"
             android:exported="true"
@@ -39,6 +44,7 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true"
+            android:parentActivityName=".LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".LoginActivity"
@@ -52,7 +58,8 @@
         </activity>
         <activity
             android:name=".BonActivity"
-            android:exported="true"/>
+            android:exported="true"
+            android:parentActivityName=".ListPelangganActivity"/>
     </application>
 
 </manifest>

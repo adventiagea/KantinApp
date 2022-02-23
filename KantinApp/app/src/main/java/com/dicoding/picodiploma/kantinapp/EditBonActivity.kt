@@ -43,6 +43,7 @@ class EditBonActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
 
         supportActionBar?.title = "Edit Bon"
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
         val tanggalV = intent.getStringExtra(EXTRA_TANGGAL)
         val menuV = intent.getStringExtra(EXTRA_MENU)
@@ -64,7 +65,11 @@ class EditBonActivity : AppCompatActivity() {
             datePicker()
 
             tanggalDetail.text = getTanggal()
-            menuDetail.hint = menuV.toString()
+            if (menuV.isNullOrEmpty()) ({
+                menuDetail.hint = "-"
+            }).toString() else ({
+                menuDetail.hint = menuV.toString()
+            }).toString()
             jumlahDetail.hint = jumlahV.toString()
             hargaDetail.hint = hargaV.toString()
             totalDetail.hint = totalV.toString()

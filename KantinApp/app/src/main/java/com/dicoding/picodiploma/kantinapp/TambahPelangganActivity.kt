@@ -26,6 +26,8 @@ class TambahPelangganActivity : AppCompatActivity() {
         pelangganBinding = ActivityTambahPelangganBinding.inflate(layoutInflater)
         setContentView(pelangganBinding.root)
 
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
+
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
 
         save()

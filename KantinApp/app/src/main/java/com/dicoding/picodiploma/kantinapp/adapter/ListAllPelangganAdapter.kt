@@ -10,12 +10,12 @@ import com.dicoding.picodiploma.kantinapp.databinding.ListPelangganBinding
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.utils.PelangganDiff
 
-class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganViewHolder>() {
+class ListAllPelangganAdapter: RecyclerView.Adapter<ListAllPelangganAdapter.PelangganViewHolder>() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var onItemClickCallback : OnItemClickCallback
     private val preferencesName = "kantinApp"
-    private val idPelanggan = "key_id_pelanggan"
-    private val namaPelanggan = "key_nama_pelanggan"
+    private val idPelanggan = "key_id_pelanggan-all"
+    private val namaPelanggan = "key_nama_pelanggan-all"
     private var list = arrayListOf<PelangganData>()
 
     interface OnItemClickCallback {
@@ -44,8 +44,8 @@ class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganV
                 namaPelanggan.text = nama
 
                 sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
-                //saveIdPelanggan(id.toString())
-                //saveNamePelanggan(nama)
+                saveIdPelanggan(id.toString())
+                saveNamePelanggan(nama)
             }
 
             itemView.setOnClickListener {

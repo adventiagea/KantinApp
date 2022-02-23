@@ -1,5 +1,6 @@
 package com.dicoding.picodiploma.kantinapp
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -20,6 +21,7 @@ class EditNamaActivity : AppCompatActivity() {
     private val idKey = "key_id_user"
     private val namaPelanggan = "key_nama_pelanggan"
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditNamaBinding.inflate(layoutInflater)
@@ -29,14 +31,15 @@ class EditNamaActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
 
         supportActionBar?.title = "Edit Nama Pelanggan"
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
-        binding.newNamaTitle.text = getNamaPelanggan()
+        binding.newNamaTitle.text = "Nama sebelumnya : " + getNamaPelanggan()
 
         binding.simpanPerubahanButton.setOnClickListener {
             val namaTitle = binding.newNamaTitle
             val etNama = binding.ubahNama
 
-            namaTitle.text = etNama.text
+            namaTitle.text = "Nama baru : " + etNama.text
 
             if (etNama.text != null){
                 viewModel.setPelanggan(getIdPelanggan()!!.toInt(),getIdUser(),etNama.text.toString())

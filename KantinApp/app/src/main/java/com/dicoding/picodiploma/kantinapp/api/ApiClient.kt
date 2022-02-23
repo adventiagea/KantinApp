@@ -15,7 +15,7 @@ interface ApiClient {
     @GET("pelanggan/get_all_pelanggan_where_iduser.php")
     fun allPelangganUser(
         @Query("id_user") id_user : Int
-    ) : Call<ArrayList<PelangganData>>
+    ) : Call<PelangganArray>
 
     @GET("pelanggan/get_all_pelanggan_where_nama_iduser.php")
     fun searchPelanggan(
@@ -34,6 +34,12 @@ interface ApiClient {
         @Query("id_pelanggan") id_pelanggan : Int,
         @Query("id_user") id_user : Int,
         @Query("tanggal") tanggal: String
+    ): Call<BonArray>
+
+    @GET("bon/get_total_bon_user.php")
+    fun totalBonUser(
+        @Query("id_user") id_user : Int,
+        @Query("id_pelanggan") id_pelanggan : Int
     ): Call<BonArray>
 
     @FormUrlEncoded

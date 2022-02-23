@@ -25,6 +25,7 @@ class BonActivity : AppCompatActivity() {
     private val idPelanggan = "key_id_pelanggan"
     private val namaPelanggan = "key_nama_pelanggan"
     private val idKey = "key_id_user"
+    private val idTransaksi = "key_id_transaksi"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +33,20 @@ class BonActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
+
+        val userID = intent.getIntExtra(EXTRA_ID_USER, 0)
+        val pelangganID = intent.getStringExtra(EXTRA_ID_PELANGGAN)
+        val pelangganName = intent.getStringExtra(EXTRA_NAMA_PELANGGAN)
+        val bundle = Bundle()
+        bundle.getString(EXTRA_ID_PELANGGAN, pelangganID)
+        bundle.getInt(EXTRA_ID_USER, userID)
+        bundle.getString(EXTRA_NAMA_PELANGGAN, pelangganName)
+
         supportActionBar?.title = getNamaPelanggan()
 
         adapter = ListBonAdapter()
-
 
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ListBonViewModel::class.java]
 
@@ -56,6 +67,8 @@ class BonActivity : AppCompatActivity() {
                         override fun setItemClicked(data: BonData) {
                             val intent = Intent(this@BonActivity, DetailBonActivity::class.java)
                             intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, data.tanggal)
+
+                            saveIdTransaksi(data.idBon!!.toInt())
 
                             startActivity(intent)
                         }
@@ -82,12 +95,13 @@ class BonActivity : AppCompatActivity() {
 
                         adapter.listTransaksi(it)
 
-
-
                         adapter.setonItemClickCallback(object : ListBonAdapter.OnItemClickCallback{
                             override fun setItemClicked(data: BonData) {
                                 val intent = Intent(this@BonActivity, DetailBonActivity::class.java)
                                 intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, data.tanggal)
+                                intent.putExtra(DetailBonActivity.EXTRA_ID_BON, data.idBon)
+                                intent.putExtra(DetailBonActivity.EXTRA_ID_PELANGGAN, data.idPelanggan)
+                                intent.putExtra(DetailBonActivity.EXTRA_ID_USER, data.idUser)
 
                                 startActivity(intent)
                             }
@@ -156,5 +170,17 @@ class BonActivity : AppCompatActivity() {
 
     private fun getNamaPelanggan() : String? = sharedPreferences.getString(namaPelanggan, null)
 
+    private fun saveIdTransaksi(transaksiId : Int) {
+        val name : SharedPreferences.Editor = sharedPreferences.edit()
+
+        name.putInt(idTransaksi, transaksiId)
+        name.apply()
+    }
+
+    companion object {
+        val EXTRA_ID_USER = "extra_id_user"
+        val EXTRA_ID_PELANGGAN = "extra_id_pelanggan"
+        val EXTRA_NAMA_PELANGGAN = "extra_nama_pelanggan"
+    }
 
 }

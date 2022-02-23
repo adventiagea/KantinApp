@@ -30,6 +30,7 @@ class TambahBonActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.title = "Tambah Transaksi"
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[AddBonViewModel::class.java]
 

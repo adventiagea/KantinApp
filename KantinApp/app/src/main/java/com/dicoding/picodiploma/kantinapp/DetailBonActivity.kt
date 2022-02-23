@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,15 +37,22 @@ class DetailBonActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
         adapter = ListBonDetailAdapter()
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[BonTanggalViewModel::class.java]
 
         val tanggal = intent.getStringExtra(EXTRA_TANGGAL)
+        val userID = intent.getIntExtra(EXTRA_ID_BON, 0)
+        val bonID = intent.getIntExtra(EXTRA_ID_USER, 0)
+        val pelangganID = intent.getStringExtra(EXTRA_ID_PELANGGAN)
         val bundle = Bundle()
         bundle.getString(EXTRA_TANGGAL, tanggal)
+        bundle.getInt(EXTRA_ID_BON, userID)
+        bundle.getInt(EXTRA_ID_USER, bonID)
+        bundle.getString(EXTRA_ID_PELANGGAN, pelangganID)
+
 
         viewModel.setBon(getIdPelanggan().toString(), getIdUser(), tanggal!!)
 
@@ -94,6 +102,9 @@ class DetailBonActivity : AppCompatActivity() {
 
     companion object{
         const val EXTRA_TANGGAL = "extra_tanggal"
+        val EXTRA_ID_USER = "extra_id_user"
+        val EXTRA_ID_PELANGGAN = "extra_id_pelanggan"
+        val EXTRA_ID_BON = "extra_id_bon"
     }
 
 }
