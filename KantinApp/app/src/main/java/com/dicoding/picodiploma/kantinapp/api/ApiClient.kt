@@ -43,6 +43,13 @@ interface ApiClient {
         @Query("id_pelanggan") id_pelanggan : Int
     ): Call<TotalArray>
 
+    @GET("bon/get_total_bon_user_where_tanggal.php")
+    fun totalBonUserWhenTanggal(
+        @Query("id_user") id_user : Int,
+        @Query("id_pelanggan") id_pelanggan : Int,
+        @Query("tanggal") tanggal : String
+    ): Call<TotalArray>
+
     @FormUrlEncoded
     @POST("pelanggan/create_pelanggan.php")
     fun addPelanggan(

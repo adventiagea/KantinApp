@@ -53,6 +53,13 @@ class DetailBonActivity : AppCompatActivity() {
         bundle.getInt(EXTRA_ID_USER, bonID)
         bundle.getString(EXTRA_ID_PELANGGAN, pelangganID)
 
+        viewModel.setTotalBon(getIdUser(), getIdPelanggan().toString(),  tanggal!!)
+
+        viewModel.getTotalBon().observe(this, {
+            if (it != null){
+                binding.totalValue.text = it[0].total.toString()
+            }
+        })
 
         viewModel.setBon(getIdPelanggan().toString(), getIdUser(), tanggal!!)
 
