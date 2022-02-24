@@ -24,7 +24,10 @@ class RegisterActivity : AppCompatActivity() {
             val password = registerBinding.passwordInput
             val namaKantin = registerBinding.namaKantinInput
 
-            if (username.text != null && password.text != null && namaKantin.text != null){
+            if (username.text.isNullOrEmpty() || password.text.isNullOrEmpty() || namaKantin.text.isNullOrEmpty()){
+                Toast.makeText(this, "Silahkan masukkan data yang diperlukan!", Toast.LENGTH_SHORT).show()
+            }
+            else {
                 ApiBase.apiInterface.addUser(username.text.toString(), password.text.toString(), namaKantin.text.toString()).enqueue(object  : Callback<UserData>{
                     override fun onResponse(call: Call<UserData>, response: Response<UserData>) {
                         success()
@@ -35,10 +38,6 @@ class RegisterActivity : AppCompatActivity() {
                     }
 
                 })
-
-            }
-            else {
-                Toast.makeText(this, "Silahkan masukkan data yang diperlukan!", Toast.LENGTH_SHORT).show()
             }
         }
     }
