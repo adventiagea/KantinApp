@@ -31,7 +31,7 @@
             android:name=".EditBonActivity"
             android:exported="false"
             android:label="@string/edit_transaksi"
-            android:parentActivityName=".DetailBonActivity"/>
+            android:parentActivityName=".BonActivity"/>
         <activity
             android:name=".TambahPelangganActivity"
             android:exported="true"

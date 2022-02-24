@@ -59,21 +59,16 @@ class EditBonActivity : AppCompatActivity() {
         bundle.getString(EXTRA_TOTAL, totalV)
         bundle.getString(EXTRA_PEMBAYARAN, bayarV)
 
-        binding.apply {
 
+        binding.apply {
 
             datePicker()
 
             tanggalDetail.text = getTanggal()
-            if (menuV.isNullOrEmpty()) ({
-                menuDetail.hint = "-"
-            }).toString() else ({
-                menuDetail.hint = menuV.toString()
-            }).toString()
-            jumlahDetail.hint = jumlahV.toString()
-            hargaDetail.hint = hargaV.toString()
-            totalDetail.hint = totalV.toString()
-            pembayaranDetail.hint = bayarV.toString()
+            jumlahDetail.hint = "0"
+            hargaDetail.hint = "0"
+            totalDetail.hint = "0"
+            pembayaranDetail.hint = "0"
 
             saveButton.setOnClickListener {
                 if (tanggalDetail.text != null &&
@@ -91,7 +86,11 @@ class EditBonActivity : AppCompatActivity() {
                         totalDetail.text.toString().toInt(),
                         getIdPelanggan()!!.toInt(),
                         getIdUser(),
-                        pembayaranDetail.text.toString().toInt()
+                        if (pembayaranDetail.text.isEmpty()) {
+                            0
+                        } else {
+                            pembayaranDetail.text.toString().toInt()
+                        }
                     )
 
                     viewModel.getBon().observe(this@EditBonActivity, {
@@ -164,6 +163,7 @@ class EditBonActivity : AppCompatActivity() {
         const val EXTRA_HARGA = "EXTRA_HARGA"
         const val EXTRA_TOTAL = "EXTRA_TOTAL"
         const val EXTRA_PEMBAYARAN = "EXTRA_PEMBAYARAN"
+        val EXTRA_ID_BON = "extra_id_bon"
     }
 
 }

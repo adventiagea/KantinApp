@@ -33,6 +33,7 @@
         android:importantForAutofill="no"
         android:inputType="text"
         android:paddingStart="5dp"
+        android:backgroundTint="@color/black"
         android:paddingEnd="5dp"
         android:textColor="@color/black"
         android:textColorHint="#80000000"

@@ -28,8 +28,8 @@ class DetailBonActivity : AppCompatActivity() {
     private val preferencesName = "kantinApp"
     private val idPelanggan = "key_id_pelanggan"
     private val idKey = "key_id_user"
-    private val keyTanggalDetail = "key_tanggal_detail"
     private val idBon = "key_id_bon"
+    private val keyTanggalDetail = "key_tanggal_detail"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +53,9 @@ class DetailBonActivity : AppCompatActivity() {
         bundle.getInt(EXTRA_ID_BON, userID)
         bundle.getInt(EXTRA_ID_USER, bonID)
         bundle.getString(EXTRA_ID_PELANGGAN, pelangganID)
+
+        Toast.makeText(this,"${getIdUser()}, ${getIdPelanggan()}, $tanggal", Toast.LENGTH_SHORT).show()
+
 
         viewModel.setTotalBon(getIdUser(), getIdPelanggan().toString(),  tanggal!!)
 
@@ -86,7 +89,7 @@ class DetailBonActivity : AppCompatActivity() {
                             intent.putExtra(EditBonActivity.EXTRA_PEMBAYARAN, data.pembayaran)
 
                             saveTanggal(data.tanggal)
-                            idBon(data.idBon!!.toInt())
+                            saveIdBon(data.idBon!!.toInt())
 
                             startActivity(intent)
                         }
@@ -109,7 +112,7 @@ class DetailBonActivity : AppCompatActivity() {
         user.apply()
     }
 
-    private fun idBon(id : Int) {
+    private fun saveIdBon(id : Int) {
         val user : SharedPreferences.Editor = sharedPreferences.edit()
 
         user.putInt(idBon, id)
