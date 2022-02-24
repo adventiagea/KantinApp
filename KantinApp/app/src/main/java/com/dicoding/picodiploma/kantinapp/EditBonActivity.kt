@@ -102,7 +102,7 @@ class EditBonActivity : AppCompatActivity() {
 
                             Toast.makeText(
                                 this@EditBonActivity,
-                                "Berhasil mengubah nama !",
+                                "Edit bon berhasil!",
                                 Toast.LENGTH_SHORT
                             ).show()
 

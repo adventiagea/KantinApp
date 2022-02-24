@@ -53,7 +53,7 @@ class TambahPelangganActivity : AppCompatActivity() {
                 })
             }
             else {
-                Toast.makeText(this, "Gagal menyimpan!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Menambah pelanggan gagal!", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -66,7 +66,7 @@ class TambahPelangganActivity : AppCompatActivity() {
         val intent = Intent(this, ListPelangganActivity::class.java)
 
         startActivity(intent)
-        Toast.makeText(this, "Berhasil menyimpan!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Menambah pelanggan berhasil!", Toast.LENGTH_SHORT).show()
     }
 
 }

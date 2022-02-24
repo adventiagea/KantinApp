@@ -168,7 +168,7 @@ class BonActivity : AppCompatActivity() {
     }
 
     private fun notFound() {
-        Toast.makeText(this,"${getIdPelanggan()}, ${getIdUser()}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Belum ada bon!", Toast.LENGTH_SHORT).show()
     }
 
     private fun getIdUser() : Int = sharedPreferences.getInt(idKey, 0)

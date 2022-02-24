@@ -54,7 +54,7 @@ class TambahBonActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         this@TambahBonActivity,
-                        "Berhasil mengubah nama !",
+                        "Berhasil menambah bon!",
                         Toast.LENGTH_SHORT
                         ).show()
 
