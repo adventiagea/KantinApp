@@ -9,10 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.KeyEvent
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -28,8 +25,7 @@ import kotlin.system.exitProcess
 class ListPelangganActivity : AppCompatActivity() {
     private lateinit var listPelangganBinding: ActivityListPelangganBinding
     private lateinit var viewModel : ListPelangganViewModel
-    //private lateinit var allVM : ListAllPelangganViewModel
-    //private lateinit var allAdapter : ListAllPelangganAdapter
+    private lateinit var searchAdapter : ListAllPelangganAdapter
     private lateinit var adapter : ListPelangganAdapter
     private var pelangganList = ArrayList<PelangganData>()
     private lateinit var sharedPreferences: SharedPreferences
@@ -51,7 +47,7 @@ class ListPelangganActivity : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
         adapter = ListPelangganAdapter()
-        //allAdapter = ListAllPelangganAdapter()
+        searchAdapter = ListAllPelangganAdapter()
 
         listPelangganBinding.apply {
             pelangganRv.layoutManager = LinearLayoutManager(this@ListPelangganActivity)
@@ -76,6 +72,7 @@ class ListPelangganActivity : AppCompatActivity() {
 
             buttonSearch.setOnClickListener {
                 search()
+                pelangganRv.visibility = View.INVISIBLE
             }
 
             etSearch.setOnKeyListener { _, keyCode, event ->
@@ -86,23 +83,22 @@ class ListPelangganActivity : AppCompatActivity() {
                 return@setOnKeyListener false
             }
 
-            /*
-            allPelangganRv.layoutManager = LinearLayoutManager(this@ListPelangganActivity)
-            allPelangganRv.setHasFixedSize(true)
-            allPelangganRv.adapter = allAdapter
+            searchPelangganRv.layoutManager = LinearLayoutManager(this@ListPelangganActivity)
+            searchPelangganRv.setHasFixedSize(true)
+            searchPelangganRv.adapter = searchAdapter
 
-            allAdapter.setonItemClickCallback(object : ListAllPelangganAdapter.OnItemClickCallback{
+            searchAdapter.setonItemClickCallback(object : ListAllPelangganAdapter.OnItemClickCallback{
                 override fun setItemClicked(data: PelangganData) {
                     val intent = Intent(this@ListPelangganActivity, BonActivity::class.java)
 
                     startActivity(intent)
+
+                    saveIdPelanggan(data.idPelanggan.toString())
+                    saveNamePelanggan(data.namaPelanggan)
                 }
 
             })
 
-            allVM.setAllPelanggan(getIdUser())
-
-             */
         }
 
         viewModel.getPelanggan().observe(this, {
@@ -111,7 +107,7 @@ class ListPelangganActivity : AppCompatActivity() {
                     notFound()
                 }
                 else {
-                    adapter.listPelanggan(it)
+                    searchAdapter.listPelanggan(it)
                 }
             }
         })
