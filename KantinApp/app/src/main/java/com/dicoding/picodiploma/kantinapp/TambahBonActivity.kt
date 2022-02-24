@@ -36,16 +36,28 @@ class TambahBonActivity : AppCompatActivity() {
 
         binding.saveButton.setOnClickListener {
             binding.apply {
-                viewModel.setBon(
-                    tanggalDetail.text.toString(),
-                    menuDetail.text.toString(),
-                    jumlahDetail.text.toString().toInt(),
-                    hargaDetail.text.toString().toInt(),
-                    totalDetail.text.toString().toInt(),
-                    getIdPelanggan()!!.toInt(),
-                    getIdUser(),
-                    pembayaranDetail.text.toString().toInt()
-                )
+                if (pembayaranDetail.text.isNullOrEmpty()){
+                    pembayaranDetail.setText("0")
+                }
+
+                if (menuDetail.text.isNullOrEmpty() || menuDetail.text.isNullOrEmpty() || menuDetail.text.isNullOrEmpty() || menuDetail.text.isNullOrEmpty()){
+                    Toast.makeText(
+                        this@TambahBonActivity,
+                        "Masukkan data yang diperlukan!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    viewModel.setBon(
+                        tanggalDetail.text.toString(),
+                        menuDetail.text.toString(),
+                        jumlahDetail.text.toString().toInt(),
+                        hargaDetail.text.toString().toInt(),
+                        totalDetail.text.toString().toInt(),
+                        getIdPelanggan()!!.toInt(),
+                        getIdUser(),
+                        pembayaranDetail.text.toString().toInt()
+                    )
+                }
 
                 viewModel.getBon().observe(this@TambahBonActivity, {
 
