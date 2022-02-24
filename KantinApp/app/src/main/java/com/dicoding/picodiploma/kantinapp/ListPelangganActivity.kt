@@ -78,6 +78,7 @@ class ListPelangganActivity : AppCompatActivity() {
             etSearch.setOnKeyListener { _, keyCode, event ->
                 if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER){
                     search()
+                    pelangganRv.visibility = View.INVISIBLE
                     return@setOnKeyListener true
                 }
                 return@setOnKeyListener false
@@ -108,7 +109,17 @@ class ListPelangganActivity : AppCompatActivity() {
                 }
                 else {
                     searchAdapter.listPelanggan(it)
+
+                    listPelangganBinding.apply {
+                        notFound.visibility = View.INVISIBLE
+                        showAll.visibility = View.INVISIBLE
+
+                        searchPelangganRv.visibility = View.VISIBLE
+                    }
                 }
+            }
+            else {
+                notFound()
             }
         })
 
@@ -119,7 +130,15 @@ class ListPelangganActivity : AppCompatActivity() {
                 }
                 else {
                     adapter.listPelanggan(it)
+
+                    listPelangganBinding.apply {
+                        notFound.visibility = View.INVISIBLE
+                        showAll.visibility = View.INVISIBLE
+                    }
                 }
+            }
+            else {
+                notFound()
             }
         })
 
@@ -140,7 +159,23 @@ class ListPelangganActivity : AppCompatActivity() {
     private fun getIdUser() : Int = sharedPreferences.getInt(idKey, 0)
 
     private fun notFound() {
-        Toast.makeText(this, "Pelanggan tidak ditemukan!", Toast.LENGTH_SHORT).show()
+        listPelangganBinding.apply {
+            notFound.visibility = View.VISIBLE
+            showAll.visibility = View.VISIBLE
+
+            showAll.setOnClickListener {
+                pelangganRv.visibility = View.VISIBLE
+                searchPelangganRv.visibility = View.GONE
+
+                notFound.visibility = View.INVISIBLE
+                showAll.visibility = View.INVISIBLE
+            }
+
+            pelangganRv.visibility = View.INVISIBLE
+            searchPelangganRv.visibility = View.INVISIBLE
+        }
+
+        //Toast.makeText(this, "Pelanggan tidak ditemukan!", Toast.LENGTH_SHORT).show()
     }
 
     private fun search(){

@@ -63,7 +63,7 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                     context.startActivity(intent)
                 }
 
-                idBon(bon.idBon!!)
+                //idBon(bon.idBon!!)
 
                 /*
                 val value = map

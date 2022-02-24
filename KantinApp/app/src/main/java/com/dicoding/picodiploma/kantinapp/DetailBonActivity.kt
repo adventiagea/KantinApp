@@ -29,6 +29,7 @@ class DetailBonActivity : AppCompatActivity() {
     private val idPelanggan = "key_id_pelanggan"
     private val idKey = "key_id_user"
     private val keyTanggalDetail = "key_tanggal_detail"
+    private val idBon = "key_id_bon"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +86,7 @@ class DetailBonActivity : AppCompatActivity() {
                             intent.putExtra(EditBonActivity.EXTRA_PEMBAYARAN, data.pembayaran)
 
                             saveTanggal(data.tanggal)
+                            idBon(data.idBon!!.toInt())
 
                             startActivity(intent)
                         }
@@ -104,6 +106,13 @@ class DetailBonActivity : AppCompatActivity() {
         val user : SharedPreferences.Editor = sharedPreferences.edit()
 
         user.putString(keyTanggalDetail, tanggal)
+        user.apply()
+    }
+
+    private fun idBon(id : Int) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
+
+        user.putInt(idBon, id)
         user.apply()
     }
 
