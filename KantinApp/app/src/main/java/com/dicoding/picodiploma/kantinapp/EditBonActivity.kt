@@ -69,6 +69,11 @@ class EditBonActivity : AppCompatActivity() {
             hargaDetail.hint = "0"
             totalDetail.hint = "0"
             pembayaranDetail.hint = "0"
+            menuDetail.hint = "-"
+
+            if (pembayaranDetail.text.isNullOrEmpty()){
+                pembayaranDetail.setText("0")
+            }
 
             saveButton.setOnClickListener {
                 if (tanggalDetail.text != null &&
@@ -86,14 +91,11 @@ class EditBonActivity : AppCompatActivity() {
                         totalDetail.text.toString().toInt(),
                         getIdPelanggan()!!.toInt(),
                         getIdUser(),
-                        if (pembayaranDetail.text.isEmpty()) {
-                            0
-                        } else {
-                            pembayaranDetail.text.toString().toInt()
-                        }
+                        pembayaranDetail.text.toString().toInt()
                     )
 
                     viewModel.getBon().observe(this@EditBonActivity, {
+
                             val intent = Intent(this@EditBonActivity, DetailBonActivity::class.java)
 
                             intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, tanggalDetail.text)
@@ -106,6 +108,13 @@ class EditBonActivity : AppCompatActivity() {
                             ).show()
 
                     })
+                }
+                else {
+                    Toast.makeText(
+                        this@EditBonActivity,
+                        "Masukkan data yang diperlukan!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
             }
