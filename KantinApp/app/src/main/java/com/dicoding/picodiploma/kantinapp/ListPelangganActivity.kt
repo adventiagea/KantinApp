@@ -167,6 +167,22 @@ class ListPelangganActivity : AppCompatActivity() {
                 pelangganRv.visibility = View.VISIBLE
                 searchPelangganRv.visibility = View.GONE
 
+                viewModel.setAllPelanggan(getIdUser())
+
+                viewModel.getPelanggan().observe(this@ListPelangganActivity, {
+                    if (it != null){
+                        if (it.isEmpty()){
+                            notFound()
+                        }
+                        else {
+                            searchAdapter.listPelanggan(it)
+                        }
+                    }
+                    else {
+                        notFound()
+                    }
+                })
+
                 notFound.visibility = View.INVISIBLE
                 showAll.visibility = View.INVISIBLE
             }
