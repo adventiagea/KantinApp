@@ -155,8 +155,8 @@ class BonActivity : AppCompatActivity() {
             R.id.share -> {
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
-                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, "http://192.168.1.5/KantinAppDB/pdf/generate.php?id_pelanggan=${getIdPelanggan()}&id_user=${getIdUser()}")
+                    type = "text/*"
                 }
 
                 val shareIntent = Intent.createChooser(sendIntent, null)
