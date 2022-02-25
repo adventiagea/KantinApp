@@ -83,28 +83,33 @@ class BonActivity : AppCompatActivity() {
         })
 
         viewModel.setTotalBon(getIdUser(), getIdPelanggan().toString())
+        viewModel.setTotalBayarBon(getIdUser(), getIdPelanggan().toString())
 
         viewModel.getTotalBon().observe(this, {
             if (it != null){
+                val totalBonValue = it[0].total.toString()
+
                 binding.totalValue.text = it[0].total.toString()
+
+                viewModel.getTotalBayarBon().observe(this, { bayar ->
+                    if (bayar != null){
+                        val totalBayarValue = bayar[0].total.toString()
+
+                        binding.bayarValue.text = bayar[0].total.toString()
+
+                        val sisaValue = totalBonValue.toInt() - totalBayarValue.toInt()
+
+                        binding.sisaValue.text = sisaValue.toString()
+                    }
+                    else {
+                        binding.bayarValue.text = "0"
+                    }
+                })
             }
             else{
                 binding.totalValue.text = "0"
             }
         })
-
-
-        viewModel.setTotalBayarBon(getIdUser(), getIdPelanggan().toString())
-
-        viewModel.getTotalBayarBon().observe(this, {
-            if (it != null){
-                binding.bayarValue.text = it[0].total.toString()
-            }
-            else {
-                binding.bayarValue.text = "0"
-            }
-        })
-
 
         binding.swipeDown.setOnRefreshListener {
             viewModel.setBon(getIdPelanggan().toString(), getIdUser())
@@ -138,6 +143,35 @@ class BonActivity : AppCompatActivity() {
                 }
                 else {
                     notFound()
+                }
+            })
+
+            viewModel.setTotalBon(getIdUser(), getIdPelanggan().toString())
+            viewModel.setTotalBayarBon(getIdUser(), getIdPelanggan().toString())
+
+            viewModel.getTotalBon().observe(this, {
+                if (it != null){
+                    val totalBonValue = it[0].total.toString()
+
+                    binding.totalValue.text = it[0].total.toString()
+
+                    viewModel.getTotalBayarBon().observe(this, { bayar ->
+                        if (bayar != null){
+                            val totalBayarValue = bayar[0].total.toString()
+
+                            binding.bayarValue.text = bayar[0].total.toString()
+
+                            val sisaValue = totalBonValue.toInt() - totalBayarValue.toInt()
+
+                            binding.sisaValue.text = sisaValue.toString()
+                        }
+                        else {
+                            binding.bayarValue.text = "0"
+                        }
+                    })
+                }
+                else{
+                    binding.totalValue.text = "0"
                 }
             })
 
