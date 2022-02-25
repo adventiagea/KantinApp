@@ -88,7 +88,23 @@ class BonActivity : AppCompatActivity() {
             if (it != null){
                 binding.totalValue.text = it[0].total.toString()
             }
+            else{
+                binding.totalValue.text = "0"
+            }
         })
+
+
+        viewModel.setTotalBayarBon(getIdUser(), getIdPelanggan().toString())
+
+        viewModel.getTotalBayarBon().observe(this, {
+            if (it != null){
+                binding.bayarValue.text = it[0].total.toString()
+            }
+            else {
+                binding.bayarValue.text = "0"
+            }
+        })
+
 
         binding.swipeDown.setOnRefreshListener {
             viewModel.setBon(getIdPelanggan().toString(), getIdUser())

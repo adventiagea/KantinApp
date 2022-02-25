@@ -4,6 +4,7 @@ import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.model.array.PelangganArray
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.model.UserData
+import com.dicoding.picodiploma.kantinapp.model.array.BayarArray
 import com.dicoding.picodiploma.kantinapp.model.array.BonArray
 import com.dicoding.picodiploma.kantinapp.model.array.TotalArray
 import retrofit2.Call
@@ -42,6 +43,12 @@ interface ApiClient {
         @Query("id_user") id_user : Int,
         @Query("id_pelanggan") id_pelanggan : Int
     ): Call<TotalArray>
+
+    @GET("bon/get_bayar_bon_user.php")
+    fun totalBayarBonUser(
+        @Query("id_user") id_user : Int,
+        @Query("id_pelanggan") id_pelanggan : Int
+    ): Call<BayarArray>
 
     @GET("bon/get_total_bon_user_where_tanggal.php")
     fun totalBonUserWhenTanggal(

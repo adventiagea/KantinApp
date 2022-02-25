@@ -93,7 +93,7 @@
         android:id="@+id/total_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/total_title"
         android:textColor="#FF0000"
         android:textSize="20sp"
@@ -106,7 +106,7 @@
         android:id="@+id/total_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="25dp"
         android:text="@string/total"
         android:textColor="#FF0000"
         android:textSize="20sp"
@@ -115,35 +115,31 @@
         app:layout_constraintStart_toEndOf="@+id/total_title"
         app:layout_constraintTop_toTopOf="@+id/total_title" />
 
+    <TextView
+        android:id="@+id/bayar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Bayar :"
+        android:textColor="#FF0000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/total_title"
+        app:layout_constraintTop_toBottomOf="@+id/total_title"
+        tools:ignore="HardcodedText" />
 
-    <!--
-        <TextView
-            android:id="@+id/total_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25sp"
-            android:text="@string/total_title"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="76dp"
-            android:text="@string/total"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/total_title"
-            app:layout_constraintStart_toEndOf="@+id/total_title"
-            app:layout_constraintTop_toTopOf="@+id/total_title"
-            app:layout_constraintVertical_bias="0.0" />
-            -->
+    <TextView
+        android:id="@+id/bayar_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/total"
+        android:textColor="#FF0000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="@+id/total_value"
+        app:layout_constraintStart_toStartOf="@+id/total_value"
+        app:layout_constraintTop_toBottomOf="@+id/total_value" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

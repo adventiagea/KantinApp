@@ -5,8 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.picodiploma.kantinapp.api.ApiBase
+import com.dicoding.picodiploma.kantinapp.model.BayarData
 import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.model.TotalData
+import com.dicoding.picodiploma.kantinapp.model.array.BayarArray
 import com.dicoding.picodiploma.kantinapp.model.array.BonArray
 import com.dicoding.picodiploma.kantinapp.model.array.TotalArray
 import retrofit2.Call
@@ -16,6 +18,7 @@ import retrofit2.Response
 class ListBonViewModel : ViewModel() {
     val bon = MutableLiveData<ArrayList<BonData>>()
     val total = MutableLiveData<ArrayList<TotalData>>()
+    val bayar = MutableLiveData<ArrayList<BayarData>>()
 
     fun getBon() : LiveData<ArrayList<BonData>> = bon
 
@@ -41,6 +44,21 @@ class ListBonViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<TotalArray>, t: Throwable) {
+                Log.d("Failure", t.message.toString())
+            }
+
+        })
+    }
+
+    fun getTotalBayarBon() : LiveData<ArrayList<BayarData>> = bayar
+
+    fun setTotalBayarBon(idUser : Int, idPelanggan : String){
+        ApiBase.apiInterface.totalBayarBonUser(idUser, idPelanggan.toInt()).enqueue(object :Callback<BayarArray>{
+            override fun onResponse(call: Call<BayarArray>, response: Response<BayarArray>) {
+                bayar.postValue(response.body()?.bon)
+            }
+
+            override fun onFailure(call: Call<BayarArray>, t: Throwable) {
                 Log.d("Failure", t.message.toString())
             }
 
