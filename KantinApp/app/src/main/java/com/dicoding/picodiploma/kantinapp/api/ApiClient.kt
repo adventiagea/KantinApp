@@ -11,26 +11,31 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiClient {
+    //login
     @GET("user/get_user_detail.php")
     fun findUser(@Query("username") username : String): Call<UserData>
 
+    //semua pelanggan
     @GET("pelanggan/get_all_pelanggan_where_iduser.php")
     fun allPelangganUser(
         @Query("id_user") id_user : Int
     ) : Call<PelangganArray>
 
+    //cari pelanggan
     @GET("pelanggan/get_all_pelanggan_where_nama_iduser.php")
     fun searchPelanggan(
         @Query("nama_pelanggan") nama_pelanggan : String,
         @Query("id_user") id_user : Int
     ): Call<PelangganArray>
 
+    //semua bon
     @GET("bon/get_all_bon_where_nama_iduser.php")
     fun showBon(
         @Query("id_pelanggan") id_pelanggan : Int,
         @Query("id_user") id_user : Int
     ): Call<BonArray>
 
+    //bon di 1 hari
     @GET("bon/get_all_bon_where_nama_iduser_tanggal.php")
     fun showBonWhenTanggal(
         @Query("id_pelanggan") id_pelanggan : Int,
@@ -38,18 +43,21 @@ interface ApiClient {
         @Query("tanggal") tanggal: String
     ): Call<BonArray>
 
+    //total bon
     @GET("bon/get_total_bon_user.php")
     fun totalBonUser(
         @Query("id_user") id_user : Int,
         @Query("id_pelanggan") id_pelanggan : Int
     ): Call<TotalArray>
 
+    //bon dibayar
     @GET("bon/get_bayar_bon_user.php")
     fun totalBayarBonUser(
         @Query("id_user") id_user : Int,
         @Query("id_pelanggan") id_pelanggan : Int
     ): Call<BayarArray>
 
+    //total bon di 1 hari
     @GET("bon/get_total_bon_user_where_tanggal.php")
     fun totalBonUserWhenTanggal(
         @Query("id_user") id_user : Int,
@@ -57,6 +65,7 @@ interface ApiClient {
         @Query("tanggal") tanggal : String
     ): Call<TotalArray>
 
+    //buat pelanggan baru
     @FormUrlEncoded
     @POST("pelanggan/create_pelanggan.php")
     fun addPelanggan(
@@ -64,6 +73,7 @@ interface ApiClient {
         @Field("id_user") id_user: Int
     ): Call<PelangganData>
 
+    //ubah nama pelanggan
     @FormUrlEncoded
     @POST("pelanggan/update_pelanggan.php")
     fun updatePelanggan(
@@ -72,6 +82,7 @@ interface ApiClient {
         @Field("nama_pelanggan") nama_pelanggan: String
     ): Call<PelangganData>
 
+    //buat user baru
     @FormUrlEncoded
     @POST("user/create_user.php")
     fun addUser(
@@ -80,6 +91,7 @@ interface ApiClient {
         @Field("nama_kantin") nama_kantin: String
     ): Call<UserData>
 
+    //ubah bon
     @FormUrlEncoded
     @POST("bon/update_bon.php")
     fun updateBon(
@@ -94,6 +106,7 @@ interface ApiClient {
         @Field("pembayaran") pembayaran: Int
     ): Call<BonData>
 
+    //buat bon
     @FormUrlEncoded
     @POST("bon/create_bon.php")
     fun addBon(
