@@ -27,6 +27,8 @@ class BonActivity : AppCompatActivity() {
     private val namaPelanggan = "key_nama_pelanggan"
     private val idKey = "key_id_user"
     private val idBon = "key_id_bon"
+    private val keyTanggal = "key_tanggal"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -205,7 +207,7 @@ class BonActivity : AppCompatActivity() {
             R.id.share -> {
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, "http://10.5.1.110/KantinAppDB/pdf/generate.php?id_pelanggan=${getIdPelanggan()}&id_user=${getIdUser()}")
+                    putExtra(Intent.EXTRA_TEXT, "http://192.168.1.5/KantinAppDB/pdf/generate.php?id_pelanggan=${getIdPelanggan()}&id_user=${getIdUser()}")
                     type = "text/*"
                 }
 
@@ -234,6 +236,13 @@ class BonActivity : AppCompatActivity() {
 
         name.putInt(idBon, transaksiId)
         name.apply()
+    }
+
+    private fun saveTanggal(tanggal : String) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
+
+        user.putString(keyTanggal, tanggal)
+        user.apply()
     }
 
     companion object {

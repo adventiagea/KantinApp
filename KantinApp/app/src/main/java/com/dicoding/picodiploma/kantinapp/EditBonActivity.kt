@@ -32,6 +32,11 @@ class EditBonActivity : AppCompatActivity() {
     private val idKey = "key_id_user"
     private val idBon = "key_id_bon"
     private val keyTanggal = "key_tanggal"
+    private val keyMenuDetail = "key_menu_detail"
+    private val keyJumlahDetail = "key_jumlah_detail"
+    private val keyHargaDetail = "key_harga_detail"
+    private val keyTotalDetail = "key_total_detail"
+    private val keyBayarDetail = "key_bayar_detail"
     private val cal = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,14 +50,14 @@ class EditBonActivity : AppCompatActivity() {
         supportActionBar?.title = "Edit Bon"
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
-        val tanggalV = intent.getStringExtra(EXTRA_TANGGAL)
+        val idBon = intent.getStringExtra(EXTRA_ID_BON)
         val menuV = intent.getStringExtra(EXTRA_MENU)
         val hargaV = intent.getStringExtra(EXTRA_HARGA)
         val jumlahV = intent.getStringExtra(EXTRA_JUMLAH)
         val totalV = intent.getStringExtra(EXTRA_TOTAL)
         val bayarV = intent.getStringExtra(EXTRA_PEMBAYARAN)
         val bundle = Bundle()
-        bundle.getString(EXTRA_TANGGAL, tanggalV)
+        bundle.getString(EXTRA_TANGGAL, idBon)
         bundle.getString(EXTRA_MENU, menuV)
         bundle.getString(EXTRA_HARGA, hargaV)
         bundle.getString(EXTRA_JUMLAH, jumlahV)
@@ -65,11 +70,15 @@ class EditBonActivity : AppCompatActivity() {
             datePicker()
 
             tanggalDetail.text = getTanggal()
-            jumlahDetail.hint = "0"
-            hargaDetail.hint = "0"
-            totalDetail.hint = "0"
-            pembayaranDetail.hint = "0"
-            menuDetail.hint = "-"
+
+            viewModel.setBonDetail(getIdBon())
+            viewModel.getBonDetail().observe(this@EditBonActivity, { bon ->
+                jumlahDetail.hint = bon[0].jumlah.toString()
+                hargaDetail.hint = bon[0].hargaSatuan.toString()
+                totalDetail.hint = bon[0].hargaTotal.toString()
+                pembayaranDetail.hint = bon[0].pembayaran.toString()
+                menuDetail.hint = bon[0].menu
+            })
 
             if (pembayaranDetail.text.isNullOrEmpty()){
                 pembayaranDetail.setText("0")
@@ -172,7 +181,7 @@ class EditBonActivity : AppCompatActivity() {
         const val EXTRA_HARGA = "EXTRA_HARGA"
         const val EXTRA_TOTAL = "EXTRA_TOTAL"
         const val EXTRA_PEMBAYARAN = "EXTRA_PEMBAYARAN"
-        val EXTRA_ID_BON = "extra_id_bon"
+        const val EXTRA_ID_BON = "extra_id_bon"
     }
 
 }

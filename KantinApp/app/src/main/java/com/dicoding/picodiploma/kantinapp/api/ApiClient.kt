@@ -43,6 +43,12 @@ interface ApiClient {
         @Query("tanggal") tanggal: String
     ): Call<BonArray>
 
+    //bon detail
+    @GET("bon/get_bon_detail.php")
+    fun showBonDetail(
+        @Query("id_bon") id_bon : Int
+    ): Call<BonArray>
+
     //total bon
     @GET("bon/get_total_bon_user.php")
     fun totalBonUser(

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -29,7 +30,13 @@ class DetailBonActivity : AppCompatActivity() {
     private val idPelanggan = "key_id_pelanggan"
     private val idKey = "key_id_user"
     private val idBon = "key_id_bon"
+    private val keyTanggal = "key_tanggal"
     private val keyTanggalDetail = "key_tanggal_detail"
+    private val keyMenuDetail = "key_menu_detail"
+    private val keyJumlahDetail = "key_jumlah_detail"
+    private val keyHargaDetail = "key_harga_detail"
+    private val keyTotalDetail = "key_total_detail"
+    private val keyBayarDetail = "key_bayar_detail"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +61,6 @@ class DetailBonActivity : AppCompatActivity() {
         bundle.getInt(EXTRA_ID_USER, bonID)
         bundle.getString(EXTRA_ID_PELANGGAN, pelangganID)
 
-        Toast.makeText(this,"${getIdUser()}, ${getIdPelanggan()}, $tanggal", Toast.LENGTH_SHORT).show()
-
-
         viewModel.setTotalBon(getIdUser(), getIdPelanggan().toString(),  tanggal!!)
 
         viewModel.getTotalBon().observe(this, {
@@ -65,7 +69,7 @@ class DetailBonActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.setBon(getIdPelanggan().toString(), getIdUser(), tanggal!!)
+        viewModel.setBon(getIdPelanggan().toString(), getIdUser(), tanggal)
 
         viewModel.getBon().observe(this, {
             if (it != null){
@@ -80,8 +84,12 @@ class DetailBonActivity : AppCompatActivity() {
 
                     adapter.setonItemClickCallback(object : ListBonDetailAdapter.OnItemClickCallback{
                         override fun setItemClicked(data: BonData) {
+
+                            Toast.makeText(this@DetailBonActivity, data.menu, Toast.LENGTH_SHORT).show()
+
+                            Log.d("menu", data.menu)
                             val intent = Intent(this@DetailBonActivity, EditBonActivity::class.java)
-                            intent.putExtra(EditBonActivity.EXTRA_TANGGAL, data.tanggal)
+                            intent.putExtra(EditBonActivity.EXTRA_ID_BON, data.idBon)
                             intent.putExtra(EditBonActivity.EXTRA_MENU, data.menu)
                             intent.putExtra(EditBonActivity.EXTRA_JUMLAH, data.jumlah)
                             intent.putExtra(EditBonActivity.EXTRA_HARGA, data.hargaSatuan)
@@ -89,9 +97,11 @@ class DetailBonActivity : AppCompatActivity() {
                             intent.putExtra(EditBonActivity.EXTRA_PEMBAYARAN, data.pembayaran)
 
                             saveTanggal(data.tanggal)
-                            saveIdBon(data.idBon!!.toInt())
+
 
                             startActivity(intent)
+
+                            saveIdBon(data.idBon!!.toInt())
                         }
 
                     })
@@ -105,10 +115,47 @@ class DetailBonActivity : AppCompatActivity() {
 
     private fun getIdPelanggan() : String? = sharedPreferences.getString(idPelanggan, null)
 
+    private fun getTanggalBon() : String? = sharedPreferences.getString(keyTanggal, null)
+
     private fun saveTanggal(tanggal : String) {
         val user : SharedPreferences.Editor = sharedPreferences.edit()
 
         user.putString(keyTanggalDetail, tanggal)
+        user.apply()
+    }
+
+    private fun saveMenu(menu : String) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
+
+        user.putString(keyMenuDetail, menu)
+        user.apply()
+    }
+
+    private fun saveJumlah(jumlah : Int) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
+
+        user.putInt(keyJumlahDetail, jumlah)
+        user.apply()
+    }
+
+    private fun saveHarga(harga : Int) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
+
+        user.putInt(keyHargaDetail, harga)
+        user.apply()
+    }
+
+    private fun saveTotal(total : Int) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
+
+        user.putInt(keyTotalDetail, total)
+        user.apply()
+    }
+
+    private fun saveBayar(bayar : Int) {
+        val user : SharedPreferences.Editor = sharedPreferences.edit()
+
+        user.putInt(keyBayarDetail, bayar)
         user.apply()
     }
 
