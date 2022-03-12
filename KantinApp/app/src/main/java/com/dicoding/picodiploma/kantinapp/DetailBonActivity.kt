@@ -84,10 +84,6 @@ class DetailBonActivity : AppCompatActivity() {
 
                     adapter.setonItemClickCallback(object : ListBonDetailAdapter.OnItemClickCallback{
                         override fun setItemClicked(data: BonData) {
-
-                            Toast.makeText(this@DetailBonActivity, data.menu, Toast.LENGTH_SHORT).show()
-
-                            Log.d("menu", data.menu)
                             val intent = Intent(this@DetailBonActivity, EditBonActivity::class.java)
                             intent.putExtra(EditBonActivity.EXTRA_ID_BON, data.idBon)
                             intent.putExtra(EditBonActivity.EXTRA_MENU, data.menu)

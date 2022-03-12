@@ -50,20 +50,21 @@ class EditBonActivity : AppCompatActivity() {
         supportActionBar?.title = "Edit Bon"
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
-        val idBon = intent.getStringExtra(EXTRA_ID_BON)
+        val idBon = intent.getIntExtra(EXTRA_ID_BON, 0)
         val menuV = intent.getStringExtra(EXTRA_MENU)
         val hargaV = intent.getStringExtra(EXTRA_HARGA)
         val jumlahV = intent.getStringExtra(EXTRA_JUMLAH)
         val totalV = intent.getStringExtra(EXTRA_TOTAL)
         val bayarV = intent.getStringExtra(EXTRA_PEMBAYARAN)
         val bundle = Bundle()
-        bundle.getString(EXTRA_TANGGAL, idBon)
+        bundle.getInt(EXTRA_ID_BON, idBon)
         bundle.getString(EXTRA_MENU, menuV)
         bundle.getString(EXTRA_HARGA, hargaV)
         bundle.getString(EXTRA_JUMLAH, jumlahV)
         bundle.getString(EXTRA_TOTAL, totalV)
         bundle.getString(EXTRA_PEMBAYARAN, bayarV)
 
+        Toast.makeText(this@EditBonActivity, menuV+getIdBon(), Toast.LENGTH_SHORT).show()
 
         binding.apply {
 
