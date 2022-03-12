@@ -64,15 +64,13 @@ class EditBonActivity : AppCompatActivity() {
         bundle.getString(EXTRA_TOTAL, totalV)
         bundle.getString(EXTRA_PEMBAYARAN, bayarV)
 
-        Toast.makeText(this@EditBonActivity, menuV+getIdBon(), Toast.LENGTH_SHORT).show()
-
         binding.apply {
 
             datePicker()
 
             tanggalDetail.text = getTanggal()
 
-            viewModel.setBonDetail(getIdBon())
+            viewModel.setBonDetail(idBon)
             viewModel.getBonDetail().observe(this@EditBonActivity, { bon ->
                 jumlahDetail.hint = bon[0].jumlah.toString()
                 hargaDetail.hint = bon[0].hargaSatuan.toString()
@@ -93,7 +91,7 @@ class EditBonActivity : AppCompatActivity() {
                     totalDetail.text != null
                 ) {
                     viewModel.setBon(
-                        getIdBon(),
+                        idBon,
                         tanggalDetail.text.toString(),
                         menuDetail.text.toString(),
                         jumlahDetail.text.toString().toInt(),

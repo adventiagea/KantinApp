@@ -27,7 +27,6 @@ class BonActivity : AppCompatActivity() {
     private val namaPelanggan = "key_nama_pelanggan"
     private val idKey = "key_id_user"
     private val idBon = "key_id_bon"
-    private val keyTanggal = "key_tanggal"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,8 +67,6 @@ class BonActivity : AppCompatActivity() {
                         override fun setItemClicked(data: BonData) {
                             val intent = Intent(this@BonActivity, DetailBonActivity::class.java)
                             intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, data.tanggal)
-
-                            saveIdTransaksi(data.idBon!!.toInt())
 
                             startActivity(intent)
                         }
@@ -132,8 +129,6 @@ class BonActivity : AppCompatActivity() {
                                 intent.putExtra(DetailBonActivity.EXTRA_ID_BON, data.idBon)
                                 intent.putExtra(DetailBonActivity.EXTRA_ID_PELANGGAN, data.idPelanggan)
                                 intent.putExtra(DetailBonActivity.EXTRA_ID_USER, data.idUser)
-
-                                saveIdTransaksi(data.idBon!!.toInt())
 
                                 startActivity(intent)
                             }
@@ -231,19 +226,6 @@ class BonActivity : AppCompatActivity() {
 
     private fun getNamaPelanggan() : String? = sharedPreferences.getString(namaPelanggan, null)
 
-    private fun saveIdTransaksi(transaksiId : Int) {
-        val name : SharedPreferences.Editor = sharedPreferences.edit()
-
-        name.putInt(idBon, transaksiId)
-        name.apply()
-    }
-
-    private fun saveTanggal(tanggal : String) {
-        val user : SharedPreferences.Editor = sharedPreferences.edit()
-
-        user.putString(keyTanggal, tanggal)
-        user.apply()
-    }
 
     companion object {
         val EXTRA_ID_USER = "extra_id_user"

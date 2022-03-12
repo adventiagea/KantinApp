@@ -9,6 +9,8 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -85,15 +87,8 @@ class DetailBonActivity : AppCompatActivity() {
                     adapter.setonItemClickCallback(object : ListBonDetailAdapter.OnItemClickCallback{
                         override fun setItemClicked(data: BonData) {
                             val intent = Intent(this@DetailBonActivity, EditBonActivity::class.java)
-                            intent.putExtra(EditBonActivity.EXTRA_ID_BON, data.idBon)
-                            intent.putExtra(EditBonActivity.EXTRA_MENU, data.menu)
-                            intent.putExtra(EditBonActivity.EXTRA_JUMLAH, data.jumlah)
-                            intent.putExtra(EditBonActivity.EXTRA_HARGA, data.hargaSatuan)
-                            intent.putExtra(EditBonActivity.EXTRA_TOTAL, data.hargaTotal)
-                            intent.putExtra(EditBonActivity.EXTRA_PEMBAYARAN, data.pembayaran)
 
                             saveTanggal(data.tanggal)
-
 
                             startActivity(intent)
 
@@ -110,8 +105,6 @@ class DetailBonActivity : AppCompatActivity() {
     private fun getIdUser() : Int = sharedPreferences.getInt(idKey, 0)
 
     private fun getIdPelanggan() : String? = sharedPreferences.getString(idPelanggan, null)
-
-    private fun getTanggalBon() : String? = sharedPreferences.getString(keyTanggal, null)
 
     private fun saveTanggal(tanggal : String) {
         val user : SharedPreferences.Editor = sharedPreferences.edit()

@@ -59,6 +59,7 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
 
                 edit.setOnClickListener {
                     val intent = Intent(context, EditBonActivity::class.java)
+                    intent.putExtra(EditBonActivity.EXTRA_ID_BON, bon.idBon)
 
                     context.startActivity(intent)
                 }
