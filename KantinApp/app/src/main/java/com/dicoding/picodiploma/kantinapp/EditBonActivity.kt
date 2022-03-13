@@ -42,8 +42,9 @@ class EditBonActivity : AppCompatActivity() {
     private val keyTotalDetail = "key_total_detail"
     private val keyBayarDetail = "key_bayar_detail"
     private val cal = Calendar.getInstance()
-
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityEditBonBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -76,19 +77,17 @@ class EditBonActivity : AppCompatActivity() {
 
             viewModel.setBonDetail(idBon)
             viewModel.getBonDetail().observe(this@EditBonActivity, { bon ->
-                val jumlahValue = bon[0].jumlah.toString()
-                val hargaValue = bon[0].hargaSatuan.toString()
-
                 jumlahDetail.setText(bon[0].jumlah.toString())
                 jumlahDetail.hint = "0"
                 hargaDetail.setText(bon[0].hargaSatuan.toString())
                 hargaDetail.hint = "0"
-                pembayaranDetail.hint = bon[0].pembayaran.toString()
-                menuDetail.hint = bon[0].menu
+                pembayaranDetail.setText(bon[0].pembayaran.toString())
+                pembayaranDetail.hint = "0"
+                menuDetail.setText(bon[0].menu)
+                menuDetail.hint = "Menu pesanan"
                 totalDetail.hint = bon[0].hargaTotal.toString()
 
                 jumlahDetail.addTextChangedListener(object : TextWatcher{
-                    @SuppressLint("SetTextI18n")
                     override fun beforeTextChanged(
                         s: CharSequence?,
                         start: Int,
@@ -125,6 +124,54 @@ class EditBonActivity : AppCompatActivity() {
                     override fun afterTextChanged(s: Editable?) {
                         if (jumlahDetail.text.toString().isEmpty()){
                             totalDetail.setText("Masukkan Jumlah")
+                        } else {
+                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+
+                            totalDetail.setText(totalValue.toString())
+
+                        }
+
+                    }
+
+                })
+
+                hargaDetail.addTextChangedListener(object : TextWatcher{
+                    override fun beforeTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
+                        if (hargaDetail.text.toString().isEmpty()){
+                            totalDetail.setText("Masukkan Harga")
+                        } else {
+                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+
+                            totalDetail.setText(totalValue.toString())
+
+                        }
+
+                    }
+
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                        if (hargaDetail.text.toString().isEmpty()){
+                            totalDetail.setText("Masukkan Harga")
+                        } else {
+                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+
+                            totalDetail.setText(totalValue.toString())
+
+                        }
+                    }
+
+                    override fun afterTextChanged(s: Editable?) {
+                        if (hargaDetail.text.toString().isEmpty()){
+                            totalDetail.setText("Masukkan Harga")
                         } else {
                             val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
 
