@@ -14,7 +14,7 @@ import retrofit2.Response
 class EditBonViewModel : ViewModel(){
     val bon = MutableLiveData<BonData>()
     val bonArray = MutableLiveData<ArrayList<BonData>>()
-
+    val total = MutableLiveData<Int>()
 
     fun getBon() : LiveData<BonData> = bon
 
@@ -57,6 +57,13 @@ class EditBonViewModel : ViewModel(){
         ApiBase.apiInterface.showBonDetail(idBon).enqueue(object : Callback<BonArray>{
             override fun onResponse(call: Call<BonArray>, response: Response<BonArray>) {
                 bonArray.postValue(response.body()?.bon)
+
+                val hargaValue = response.body()?.bon?.get(0)?.hargaSatuan
+                val jumlahValue = response.body()?.bon?.get(0)?.jumlah
+
+                val totalValue = jumlahValue!! * hargaValue!!
+                total.value = totalValue
+
             }
 
             override fun onFailure(call: Call<BonArray>, t: Throwable) {

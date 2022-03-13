@@ -1,11 +1,15 @@
 package com.dicoding.picodiploma.kantinapp
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.DatePicker
@@ -72,11 +76,65 @@ class EditBonActivity : AppCompatActivity() {
 
             viewModel.setBonDetail(idBon)
             viewModel.getBonDetail().observe(this@EditBonActivity, { bon ->
-                jumlahDetail.hint = bon[0].jumlah.toString()
-                hargaDetail.hint = bon[0].hargaSatuan.toString()
-                totalDetail.hint = bon[0].hargaTotal.toString()
+                val jumlahValue = bon[0].jumlah.toString()
+                val hargaValue = bon[0].hargaSatuan.toString()
+
+                jumlahDetail.setText(bon[0].jumlah.toString())
+                jumlahDetail.hint = "0"
+                hargaDetail.setText(bon[0].hargaSatuan.toString())
+                hargaDetail.hint = "0"
                 pembayaranDetail.hint = bon[0].pembayaran.toString()
                 menuDetail.hint = bon[0].menu
+                totalDetail.hint = bon[0].hargaTotal.toString()
+
+                jumlahDetail.addTextChangedListener(object : TextWatcher{
+                    @SuppressLint("SetTextI18n")
+                    override fun beforeTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
+                        if (jumlahDetail.text.toString().isEmpty()){
+                            totalDetail.setText("Masukkan Jumlah")
+                        } else {
+                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+
+                            totalDetail.setText(totalValue.toString())
+
+                        }
+
+                    }
+
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                        if (jumlahDetail.text.toString().isEmpty()){
+                            totalDetail.setText("Masukkan Jumlah")
+                        } else {
+                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+
+                            totalDetail.setText(totalValue.toString())
+
+                        }
+                    }
+
+                    override fun afterTextChanged(s: Editable?) {
+                        if (jumlahDetail.text.toString().isEmpty()){
+                            totalDetail.setText("Masukkan Jumlah")
+                        } else {
+                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+
+                            totalDetail.setText(totalValue.toString())
+
+                        }
+
+                    }
+
+                })
             })
 
             if (pembayaranDetail.text.isNullOrEmpty()){
