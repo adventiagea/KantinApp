@@ -21,13 +21,7 @@ class DetailBonActivity : AppCompatActivity() {
     private val idPelanggan = "key_id_pelanggan"
     private val idKey = "key_id_user"
     private val idBon = "key_id_bon"
-    private val keyTanggal = "key_tanggal"
     private val keyTanggalDetail = "key_tanggal_detail"
-    private val keyMenuDetail = "key_menu_detail"
-    private val keyJumlahDetail = "key_jumlah_detail"
-    private val keyHargaDetail = "key_harga_detail"
-    private val keyTotalDetail = "key_total_detail"
-    private val keyBayarDetail = "key_bayar_detail"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,6 +83,48 @@ class DetailBonActivity : AppCompatActivity() {
                 }
             }
         })
+
+        binding.swipeDown.setOnRefreshListener {
+            viewModelDetail.setTotalBon(getIdUser(), getIdPelanggan().toString(),  tanggal!!)
+
+            viewModelDetail.getTotalBon().observe(this, {
+                if (it != null){
+                    binding.totalValue.text = it[0].total.toString()
+                }
+            })
+
+            viewModelDetail.setBon(getIdPelanggan().toString(), getIdUser(), tanggal)
+
+            viewModelDetail.getBon().observe(this, {
+                if (it != null){
+                    binding.apply {
+                        detailBonRv.layoutManager = LinearLayoutManager(this@DetailBonActivity)
+                        detailBonRv.setHasFixedSize(true)
+                        detailBonRv.adapter = adapter
+
+                        adapter.listTransaksi(it)
+
+                        supportActionBar?.title = tanggal
+
+                        adapter.setonItemClickCallback(object : ListBonDetailAdapter.OnItemClickCallback{
+                            override fun setItemClicked(data: BonData) {
+                                val intent = Intent(this@DetailBonActivity, EditBonActivity::class.java)
+
+                                saveTanggal(data.tanggal)
+
+                                startActivity(intent)
+
+                                saveIdBon(data.idBon!!.toInt())
+                            }
+
+                        })
+
+                    }
+                }
+            })
+
+            binding.swipeDown.isRefreshing = false
+        }
     }
 
     private fun getIdUser() : Int = sharedPreferences.getInt(idKey, 0)

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".DetailBonActivity">
-    <!--
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_down"
@@ -17,56 +16,49 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/detail_bon_rv"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/total_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/list_transaksi_detail" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_bon_rv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/total_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/list_transaksi_detail" />
+
+            <TextView
+                android:id="@+id/total_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/total_title"
+                android:textColor="#FF0000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/total_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/total"
+                android:textColor="#FF0000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/total_title"
+                app:layout_constraintStart_toEndOf="@+id/total_title"
+                app:layout_constraintTop_toTopOf="@+id/total_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    -->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/detail_bon_rv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/total_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/list_transaksi_detail" />
-
-    <TextView
-        android:id="@+id/total_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/total_title"
-        android:textColor="#FF0000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/total_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="@string/total"
-        android:textColor="#FF0000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/total_title"
-        app:layout_constraintStart_toEndOf="@+id/total_title"
-        app:layout_constraintTop_toTopOf="@+id/total_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

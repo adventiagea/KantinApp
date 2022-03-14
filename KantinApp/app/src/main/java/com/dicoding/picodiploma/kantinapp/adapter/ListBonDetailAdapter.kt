@@ -1,6 +1,8 @@
 package com.dicoding.picodiploma.kantinapp.adapter
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -66,13 +68,24 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                 }
 
                 delete.setOnClickListener {
-                    delete()
+                    AlertDialog.Builder(context)
+                        .setTitle("Hapus bon?")
+                        .setMessage("Apakah anda yakin untuk menghapus bon?")
+                        .setPositiveButton("Ya") { _, _ ->
+                            delete()
+                        }
+                        .setNegativeButton("Tidak") { _, _ ->
+                            val intent = Intent(context, DetailBonActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+
+                            context.startActivity(intent)
+                        }
+                        .show()
                 }
             }
         }
 
-        val context = itemView.context
-
+        val contexts = itemView.context!!
 
     }
 
@@ -83,7 +96,7 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
     override fun onBindViewHolder(holder: DetailBonViewHolder, position: Int) {
         holder.bind(list[position])
 
-        context = holder.context
+        context = holder.contexts
     }
 
     override fun getItemCount(): Int = list.size
@@ -93,7 +106,12 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
             override fun onResponse(call: Call<ResponseApi>, response: Response<ResponseApi>) {
                 Toast.makeText(context, response.body()?.message, Toast.LENGTH_SHORT).show()
 
-                val intent = Intent(context, BonActivity::class.java)
+                //val intent = Intent(context, BonActivity::class.java)
+                //context.startActivity(intent)
+
+                val intent = Intent(context, DetailBonActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+
                 context.startActivity(intent)
             }
 
