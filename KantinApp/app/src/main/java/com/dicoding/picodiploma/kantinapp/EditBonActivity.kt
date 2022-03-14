@@ -77,32 +77,33 @@ class EditBonActivity : AppCompatActivity() {
 
             viewModel.setBonDetail(idBon)
             viewModel.getBonDetail().observe(this@EditBonActivity, { bon ->
-                jumlahDetail.setText(bon[0].jumlah.toString())
-                jumlahDetail.hint = "0"
+                //jumlahDetail.setText(bon[0].jumlah.toString())
+                //jumlahDetail.hint = "0"
                 hargaDetail.setText(bon[0].hargaSatuan.toString())
                 hargaDetail.hint = "0"
                 pembayaranDetail.setText(bon[0].pembayaran.toString())
                 pembayaranDetail.hint = "0"
                 menuDetail.setText(bon[0].menu)
                 menuDetail.hint = "Menu pesanan"
-                totalDetail.hint = bon[0].hargaTotal.toString()
+                //totalDetail.hint = bon[0].hargaTotal.toString()
 
-                jumlahDetail.addTextChangedListener(object : TextWatcher{
+                jumlahDetail.setText(bon[0].jumlah.toString())
+                totalDetail.setText(bon[0].hargaTotal.toString())
+
+                if (jumlahDetail.text.toString().isEmpty() && hargaDetail.text.toString().isEmpty()) {
+                    totalDetail.setText("Masukkan Jumlah dan Harga")
+                }
+
+                jumlahDetail.addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(
                         s: CharSequence?,
                         start: Int,
                         count: Int,
                         after: Int
                     ) {
-                        if (jumlahDetail.text.toString().isEmpty()){
-                            totalDetail.setText("Masukkan Jumlah")
-                        } else {
-                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
-
-                            totalDetail.setText(totalValue.toString())
-
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
                         }
-
                     }
 
                     override fun onTextChanged(
@@ -111,46 +112,41 @@ class EditBonActivity : AppCompatActivity() {
                         before: Int,
                         count: Int
                     ) {
-                        if (jumlahDetail.text.toString().isEmpty()){
-                            totalDetail.setText("Masukkan Jumlah")
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
                         } else {
-                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+                            val totalValue =
+                                jumlahDetail.text.toString().toInt() * hargaDetail.text.toString()
+                                    .toInt()
 
                             totalDetail.setText(totalValue.toString())
-
                         }
                     }
 
                     override fun afterTextChanged(s: Editable?) {
-                        if (jumlahDetail.text.toString().isEmpty()){
-                            totalDetail.setText("Masukkan Jumlah")
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
                         } else {
-                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+                            val totalValue =
+                                jumlahDetail.text.toString().toInt() * hargaDetail.text.toString()
+                                    .toInt()
 
                             totalDetail.setText(totalValue.toString())
-
                         }
-
                     }
 
                 })
 
-                hargaDetail.addTextChangedListener(object : TextWatcher{
+                hargaDetail.addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(
                         s: CharSequence?,
                         start: Int,
                         count: Int,
                         after: Int
                     ) {
-                        if (hargaDetail.text.toString().isEmpty()){
-                            totalDetail.setText("Masukkan Harga")
-                        } else {
-                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
-
-                            totalDetail.setText(totalValue.toString())
-
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
                         }
-
                     }
 
                     override fun onTextChanged(
@@ -159,26 +155,27 @@ class EditBonActivity : AppCompatActivity() {
                         before: Int,
                         count: Int
                     ) {
-                        if (hargaDetail.text.toString().isEmpty()){
-                            totalDetail.setText("Masukkan Harga")
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
                         } else {
-                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+                            val totalValue =
+                                jumlahDetail.text.toString().toInt() * hargaDetail.text.toString()
+                                    .toInt()
 
                             totalDetail.setText(totalValue.toString())
-
                         }
                     }
 
                     override fun afterTextChanged(s: Editable?) {
-                        if (hargaDetail.text.toString().isEmpty()){
-                            totalDetail.setText("Masukkan Harga")
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
                         } else {
-                            val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+                            val totalValue =
+                                jumlahDetail.text.toString().toInt() * hargaDetail.text.toString()
+                                    .toInt()
 
                             totalDetail.setText(totalValue.toString())
-
                         }
-
                     }
 
                 })

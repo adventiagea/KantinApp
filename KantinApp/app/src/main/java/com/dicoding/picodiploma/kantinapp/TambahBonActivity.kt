@@ -6,6 +6,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -33,6 +35,100 @@ class TambahBonActivity : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[AddBonViewModel::class.java]
+
+        binding.apply {
+            //if (jumlahDetail.text.isNotEmpty() && hargaDetail.text.isNotEmpty()){
+                //val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
+
+                //totalDetail.setText(totalValue.toString())
+
+                jumlahDetail.addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
+                        }
+                    }
+
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
+                        } else {
+                            val totalValue =
+                                jumlahDetail.text.toString().toInt() * hargaDetail.text.toString()
+                                    .toInt()
+
+                            totalDetail.setText(totalValue.toString())
+                        }
+                    }
+
+                    override fun afterTextChanged(s: Editable?) {
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
+                        } else {
+                            val totalValue =
+                                jumlahDetail.text.toString().toInt() * hargaDetail.text.toString()
+                                    .toInt()
+
+                            totalDetail.setText(totalValue.toString())
+                        }
+                    }
+
+                })
+
+                hargaDetail.addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
+                        }
+                    }
+
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
+                        } else {
+                            val totalValue =
+                                jumlahDetail.text.toString().toInt() * hargaDetail.text.toString()
+                                    .toInt()
+
+                            totalDetail.setText(totalValue.toString())
+                        }
+                    }
+
+                    override fun afterTextChanged(s: Editable?) {
+                        if (jumlahDetail.text.isEmpty() || hargaDetail.text.isEmpty()){
+                            totalDetail.setText("0")
+                        } else {
+                            val totalValue =
+                                jumlahDetail.text.toString().toInt() * hargaDetail.text.toString()
+                                    .toInt()
+
+                            totalDetail.setText(totalValue.toString())
+                        }
+                    }
+
+                })
+            }
+        //}
 
         binding.saveButton.setOnClickListener {
             binding.apply {
