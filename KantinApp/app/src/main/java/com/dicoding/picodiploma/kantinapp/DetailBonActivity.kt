@@ -111,9 +111,9 @@ class DetailBonActivity : AppCompatActivity() {
 
     companion object{
         const val EXTRA_TANGGAL = "extra_tanggal"
-        val EXTRA_ID_USER = "extra_id_user"
-        val EXTRA_ID_PELANGGAN = "extra_id_pelanggan"
-        val EXTRA_ID_BON = "extra_id_bon"
+        const val EXTRA_ID_USER = "extra_id_user"
+        const val EXTRA_ID_PELANGGAN = "extra_id_pelanggan"
+        const val EXTRA_ID_BON = "extra_id_bon"
     }
 
 }

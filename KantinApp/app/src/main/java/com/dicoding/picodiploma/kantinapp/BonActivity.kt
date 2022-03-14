@@ -225,9 +225,9 @@ class BonActivity : AppCompatActivity() {
 
 
     companion object {
-        val EXTRA_ID_USER = "extra_id_user"
-        val EXTRA_ID_PELANGGAN = "extra_id_pelanggan"
-        val EXTRA_NAMA_PELANGGAN = "extra_nama_pelanggan"
+        const val EXTRA_ID_USER = "extra_id_user"
+        const val EXTRA_ID_PELANGGAN = "extra_id_pelanggan"
+        const val EXTRA_NAMA_PELANGGAN = "extra_nama_pelanggan"
     }
 
 }
