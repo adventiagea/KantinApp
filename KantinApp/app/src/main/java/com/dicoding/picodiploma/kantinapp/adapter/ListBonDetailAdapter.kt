@@ -73,6 +73,11 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                         .setMessage("Apakah anda yakin untuk menghapus bon?")
                         .setPositiveButton("Ya") { _, _ ->
                             delete()
+
+                            val intent = Intent(context, DetailBonActivity::class.java)
+                            intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, bon.tanggal)
+
+                            context.startActivity(intent)
                         }
                         .setNegativeButton("Tidak") { _, _ ->
                             val intent = Intent(context, DetailBonActivity::class.java)
@@ -106,13 +111,7 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
             override fun onResponse(call: Call<ResponseApi>, response: Response<ResponseApi>) {
                 Toast.makeText(context, response.body()?.message, Toast.LENGTH_SHORT).show()
 
-                //val intent = Intent(context, BonActivity::class.java)
-                //context.startActivity(intent)
 
-                val intent = Intent(context, DetailBonActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-
-                context.startActivity(intent)
             }
 
             override fun onFailure(call: Call<ResponseApi>, t: Throwable) {
