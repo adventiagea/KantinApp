@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityEditNamaBinding
 import com.dicoding.picodiploma.kantinapp.viewmodel.EditNamaPelangganViewModel
-import java.lang.StringBuilder
 
 class EditNamaActivity : AppCompatActivity() {
     private lateinit var binding : ActivityEditNamaBinding

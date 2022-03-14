@@ -11,11 +11,7 @@ import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.utils.PelangganDiff
 
 class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganViewHolder>() {
-    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var onItemClickCallback : OnItemClickCallback
-    private val preferencesName = "kantinApp"
-    private val idPelanggan = "key_id_pelanggan"
-    private val namaPelanggan = "key_nama_pelanggan"
     private var list = arrayListOf<PelangganData>()
 
     interface OnItemClickCallback {
@@ -39,13 +35,8 @@ class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganV
         fun bind (pelanggan : PelangganData){
             binding.apply {
                 val nama = pelanggan.namaPelanggan
-                val id = pelanggan.idPelanggan
 
                 namaPelanggan.text = nama
-
-                sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
-                //saveIdPelanggan(id.toString())
-                //saveNamePelanggan(nama)
             }
 
             itemView.setOnClickListener {
@@ -63,20 +54,6 @@ class ListPelangganAdapter: RecyclerView.Adapter<ListPelangganAdapter.PelangganV
     override fun onBindViewHolder(holder: PelangganViewHolder, position: Int) {
         holder.bind(list[position])
 
-    }
-
-    private fun saveIdPelanggan(customerId : String) {
-        val name : SharedPreferences.Editor = sharedPreferences.edit()
-
-        name.putString(idPelanggan, customerId)
-        name.apply()
-    }
-
-    private fun saveNamePelanggan(customerName : String) {
-        val name : SharedPreferences.Editor = sharedPreferences.edit()
-
-        name.putString(namaPelanggan, customerName)
-        name.apply()
     }
 
     override fun getItemCount(): Int = list.size

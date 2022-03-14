@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.kantinapp.adapter.ListBonAdapter
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityBonBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
-import com.dicoding.picodiploma.kantinapp.model.TotalData
 import com.dicoding.picodiploma.kantinapp.viewmodel.ListBonViewModel
 
 class BonActivity : AppCompatActivity() {
@@ -26,8 +25,6 @@ class BonActivity : AppCompatActivity() {
     private val idPelanggan = "key_id_pelanggan"
     private val namaPelanggan = "key_nama_pelanggan"
     private val idKey = "key_id_user"
-    private val idBon = "key_id_bon"
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

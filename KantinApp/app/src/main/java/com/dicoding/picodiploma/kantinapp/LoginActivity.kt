@@ -5,17 +5,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.JsonReader
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.picodiploma.kantinapp.api.ApiBase
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityLoginBinding
-import com.dicoding.picodiploma.kantinapp.model.UserData
 import com.dicoding.picodiploma.kantinapp.viewmodel.LoginViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var loginBinding : ActivityLoginBinding

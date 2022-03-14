@@ -1,16 +1,13 @@
 package com.dicoding.picodiploma.kantinapp
 
-import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.*
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +15,6 @@ import com.dicoding.picodiploma.kantinapp.adapter.ListAllPelangganAdapter
 import com.dicoding.picodiploma.kantinapp.adapter.ListPelangganAdapter
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityListPelangganBinding
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
-import com.dicoding.picodiploma.kantinapp.viewmodel.ListAllPelangganViewModel
 import com.dicoding.picodiploma.kantinapp.viewmodel.ListPelangganViewModel
 import kotlin.system.exitProcess
 
@@ -190,8 +186,6 @@ class ListPelangganActivity : AppCompatActivity() {
             pelangganRv.visibility = View.INVISIBLE
             searchPelangganRv.visibility = View.INVISIBLE
         }
-
-        //Toast.makeText(this, "Pelanggan tidak ditemukan!", Toast.LENGTH_SHORT).show()
     }
 
     private fun search(){
@@ -241,27 +235,6 @@ class ListPelangganActivity : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
     }
-    /*
-
-    override fun onQueryTextSubmit(query: String): Boolean {
-        viewModel.setPelanggan(query, getIdUser())
-        if (query.isEmpty()){
-            adapter.listPelanggan(arrayListOf())
-        }
-
-        return true
-    }
-
-    override fun onQueryTextChange(query: String): Boolean {
-        viewModel.setPelanggan(query, getIdUser())
-        if (query.isEmpty()){
-            adapter.listPelanggan(arrayListOf())
-        }
-
-        return true
-    }
-
-     */
 
     private fun saveIdPelanggan(customerId : String) {
         val name : SharedPreferences.Editor = sharedPreferences.edit()

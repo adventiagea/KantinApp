@@ -1,26 +1,19 @@
 package com.dicoding.picodiploma.kantinapp.adapter
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.SharedPreferences
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.picodiploma.kantinapp.*
 import com.dicoding.picodiploma.kantinapp.api.ApiBase
-import com.dicoding.picodiploma.kantinapp.databinding.ListTransaksiBinding
 import com.dicoding.picodiploma.kantinapp.databinding.ListTransaksiDetailBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.model.ResponseApi
 import com.dicoding.picodiploma.kantinapp.utils.TransaksiDiff
-import com.dicoding.picodiploma.kantinapp.viewmodel.DetailBonViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -74,9 +67,6 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
 
                 delete.setOnClickListener {
                     delete()
-
-                    //val intent = Intent(context, DetailBonActivity::class.java)
-                    //context.startActivity(intent)
                 }
             }
         }

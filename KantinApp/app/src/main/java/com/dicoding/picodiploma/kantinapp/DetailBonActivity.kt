@@ -102,41 +102,6 @@ class DetailBonActivity : AppCompatActivity() {
         user.apply()
     }
 
-    private fun saveMenu(menu : String) {
-        val user : SharedPreferences.Editor = sharedPreferences.edit()
-
-        user.putString(keyMenuDetail, menu)
-        user.apply()
-    }
-
-    private fun saveJumlah(jumlah : Int) {
-        val user : SharedPreferences.Editor = sharedPreferences.edit()
-
-        user.putInt(keyJumlahDetail, jumlah)
-        user.apply()
-    }
-
-    private fun saveHarga(harga : Int) {
-        val user : SharedPreferences.Editor = sharedPreferences.edit()
-
-        user.putInt(keyHargaDetail, harga)
-        user.apply()
-    }
-
-    private fun saveTotal(total : Int) {
-        val user : SharedPreferences.Editor = sharedPreferences.edit()
-
-        user.putInt(keyTotalDetail, total)
-        user.apply()
-    }
-
-    private fun saveBayar(bayar : Int) {
-        val user : SharedPreferences.Editor = sharedPreferences.edit()
-
-        user.putInt(keyBayarDetail, bayar)
-        user.apply()
-    }
-
     private fun saveIdBon(id : Int) {
         val user : SharedPreferences.Editor = sharedPreferences.edit()
 

@@ -36,11 +36,6 @@ class TambahBonActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[AddBonViewModel::class.java]
 
         binding.apply {
-            //if (jumlahDetail.text.isNotEmpty() && hargaDetail.text.isNotEmpty()){
-                //val totalValue = jumlahDetail.text.toString().toInt() * hargaDetail.text.toString().toInt()
-
-                //totalDetail.setText(totalValue.toString())
-
                 jumlahDetail.addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(
                         s: CharSequence?,
@@ -127,7 +122,6 @@ class TambahBonActivity : AppCompatActivity() {
 
                 })
             }
-        //}
 
         binding.saveButton.setOnClickListener {
             binding.apply {

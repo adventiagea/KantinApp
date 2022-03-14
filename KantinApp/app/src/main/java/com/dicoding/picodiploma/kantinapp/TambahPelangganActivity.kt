@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.kantinapp.api.ApiBase
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityTambahPelangganBinding
 import com.dicoding.picodiploma.kantinapp.model.PelangganData

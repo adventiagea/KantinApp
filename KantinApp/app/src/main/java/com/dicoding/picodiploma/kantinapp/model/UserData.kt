@@ -1,6 +1,5 @@
 package com.dicoding.picodiploma.kantinapp.model
 
-import androidx.annotation.NonNull
 import com.google.gson.annotations.SerializedName
 
 data class UserData(

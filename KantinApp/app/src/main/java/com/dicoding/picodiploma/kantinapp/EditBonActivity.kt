@@ -8,22 +8,13 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.picodiploma.kantinapp.api.ApiBase
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityEditBonBinding
-import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.viewmodel.EditBonViewModel
-import com.dicoding.picodiploma.kantinapp.viewmodel.EditNamaPelangganViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -36,11 +27,6 @@ class EditBonActivity : AppCompatActivity() {
     private val idKey = "key_id_user"
     private val idBon = "key_id_bon"
     private val keyTanggal = "key_tanggal"
-    private val keyMenuDetail = "key_menu_detail"
-    private val keyJumlahDetail = "key_jumlah_detail"
-    private val keyHargaDetail = "key_harga_detail"
-    private val keyTotalDetail = "key_total_detail"
-    private val keyBayarDetail = "key_bayar_detail"
     private val cal = Calendar.getInstance()
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,15 +63,12 @@ class EditBonActivity : AppCompatActivity() {
 
             viewModel.setBonDetail(idBon)
             viewModel.getBonDetail().observe(this@EditBonActivity, { bon ->
-                //jumlahDetail.setText(bon[0].jumlah.toString())
-                //jumlahDetail.hint = "0"
                 hargaDetail.setText(bon[0].hargaSatuan.toString())
                 hargaDetail.hint = "0"
                 pembayaranDetail.setText(bon[0].pembayaran.toString())
                 pembayaranDetail.hint = "0"
                 menuDetail.setText(bon[0].menu)
                 menuDetail.hint = "Menu pesanan"
-                //totalDetail.hint = bon[0].hargaTotal.toString()
 
                 jumlahDetail.setText(bon[0].jumlah.toString())
                 totalDetail.setText(bon[0].hargaTotal.toString())
@@ -232,8 +215,6 @@ class EditBonActivity : AppCompatActivity() {
     }
 
     private fun datePicker(){
-        //binding.tanggalDetail.text = "--/--/----"
-
         val set = object : DatePickerDialog.OnDateSetListener{
             override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
                 cal.set(Calendar.YEAR, year)
@@ -271,12 +252,9 @@ class EditBonActivity : AppCompatActivity() {
 
     private fun getIdPelanggan() : String? = sharedPreferences.getString(idPelanggan, null)
 
-    private fun getIdBon() : Int = sharedPreferences.getInt(idBon, 0)
-
     private fun getTanggal() : String? = sharedPreferences.getString(keyTanggal, null)
 
     companion object{
-        const val EXTRA_TANGGAL = "EXTRA_TANGGAL"
         const val EXTRA_MENU = "EXTRA_MENU"
         const val EXTRA_JUMLAH = "EXTRA_JUMLAH"
         const val EXTRA_HARGA = "EXTRA_HARGA"
