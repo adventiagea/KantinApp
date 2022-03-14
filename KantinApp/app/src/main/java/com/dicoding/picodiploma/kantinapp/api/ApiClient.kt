@@ -3,6 +3,7 @@ package com.dicoding.picodiploma.kantinapp.api
 import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.model.array.PelangganArray
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
+import com.dicoding.picodiploma.kantinapp.model.ResponseApi
 import com.dicoding.picodiploma.kantinapp.model.UserData
 import com.dicoding.picodiploma.kantinapp.model.array.BayarArray
 import com.dicoding.picodiploma.kantinapp.model.array.BonArray
@@ -13,7 +14,9 @@ import retrofit2.http.*
 interface ApiClient {
     //login
     @GET("user/get_user_detail.php")
-    fun findUser(@Query("username") username : String): Call<UserData>
+    fun findUser(
+        @Query("username") username : String
+    ) : Call<UserData>
 
     //semua pelanggan
     @GET("pelanggan/get_all_pelanggan_where_iduser.php")
@@ -48,6 +51,12 @@ interface ApiClient {
     fun showBonDetail(
         @Query("id_bon") id_bon : Int
     ): Call<BonArray>
+
+    //delete bon
+    @GET("bon/delete_bon.php")
+    fun deleteBon(
+        @Query("id_bon") id_bon : Int
+    ): Call<ResponseApi>
 
     //total bon
     @GET("bon/get_total_bon_user.php")

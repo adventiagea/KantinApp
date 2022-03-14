@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityTambahBonBinding
 import com.dicoding.picodiploma.kantinapp.viewmodel.AddBonViewModel
-import com.dicoding.picodiploma.kantinapp.viewmodel.BonTanggalViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 

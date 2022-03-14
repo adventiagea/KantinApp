@@ -5,28 +5,17 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-import android.view.MenuItem
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.picodiploma.kantinapp.adapter.ListBonAdapter
 import com.dicoding.picodiploma.kantinapp.adapter.ListBonDetailAdapter
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityDetailBonBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
-import com.dicoding.picodiploma.kantinapp.viewmodel.BonTanggalViewModel
-import com.dicoding.picodiploma.kantinapp.viewmodel.ListBonViewModel
-import java.lang.StringBuilder
-import kotlin.system.exitProcess
+import com.dicoding.picodiploma.kantinapp.viewmodel.DetailBonViewModel
 
 class DetailBonActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBonBinding
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var viewModel : BonTanggalViewModel
+    private lateinit var viewModelDetail : DetailBonViewModel
     private lateinit var adapter: ListBonDetailAdapter
     private val preferencesName = "kantinApp"
     private val idPelanggan = "key_id_pelanggan"
@@ -51,7 +40,7 @@ class DetailBonActivity : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
         adapter = ListBonDetailAdapter()
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[BonTanggalViewModel::class.java]
+        viewModelDetail = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailBonViewModel::class.java]
 
         val tanggal = intent.getStringExtra(EXTRA_TANGGAL)
         val userID = intent.getIntExtra(EXTRA_ID_BON, 0)
@@ -63,17 +52,17 @@ class DetailBonActivity : AppCompatActivity() {
         bundle.getInt(EXTRA_ID_USER, bonID)
         bundle.getString(EXTRA_ID_PELANGGAN, pelangganID)
 
-        viewModel.setTotalBon(getIdUser(), getIdPelanggan().toString(),  tanggal!!)
+        viewModelDetail.setTotalBon(getIdUser(), getIdPelanggan().toString(),  tanggal!!)
 
-        viewModel.getTotalBon().observe(this, {
+        viewModelDetail.getTotalBon().observe(this, {
             if (it != null){
                 binding.totalValue.text = it[0].total.toString()
             }
         })
 
-        viewModel.setBon(getIdPelanggan().toString(), getIdUser(), tanggal)
+        viewModelDetail.setBon(getIdPelanggan().toString(), getIdUser(), tanggal)
 
-        viewModel.getBon().observe(this, {
+        viewModelDetail.getBon().observe(this, {
             if (it != null){
                 binding.apply {
                     detailBonRv.layoutManager = LinearLayoutManager(this@DetailBonActivity)

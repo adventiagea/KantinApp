@@ -1,26 +1,34 @@
 package com.dicoding.picodiploma.kantinapp.adapter
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.picodiploma.kantinapp.EditBonActivity
-import com.dicoding.picodiploma.kantinapp.EditNamaActivity
-import com.dicoding.picodiploma.kantinapp.R
+import com.dicoding.picodiploma.kantinapp.*
+import com.dicoding.picodiploma.kantinapp.api.ApiBase
 import com.dicoding.picodiploma.kantinapp.databinding.ListTransaksiBinding
 import com.dicoding.picodiploma.kantinapp.databinding.ListTransaksiDetailBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
+import com.dicoding.picodiploma.kantinapp.model.ResponseApi
 import com.dicoding.picodiploma.kantinapp.utils.TransaksiDiff
+import com.dicoding.picodiploma.kantinapp.viewmodel.DetailBonViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBonViewHolder>(){
     private var list = arrayListOf<BonData>()
-    private lateinit var sharedPreferences: SharedPreferences
-    private val preferencesName = "kantinApp"
-    private val idBon = "key_id_bon"
+    private var idBonValue : Int = 0
+    private lateinit var context : Context
     private lateinit var onItemClickCallback : OnItemClickCallback
 
     interface OnItemClickCallback {
@@ -49,13 +57,13 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                 val jumlah = bon.jumlah.toString()
                 val menu = bon.menu
 
+                idBonValue = bon.idBon!!.toInt()
+
                 menuDetail.text = menu
                 jumlahDetail.text = jumlah
                 hargaDetail.text = harga
                 totalDetail.text = total.toString()
                 pembayaranDetail.text = pembayaran
-
-                sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
 
                 edit.setOnClickListener {
                     val intent = Intent(context, EditBonActivity::class.java)
@@ -64,24 +72,18 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
                     context.startActivity(intent)
                 }
 
-                //idBon(bon.idBon!!)
+                delete.setOnClickListener {
+                    delete()
 
-                /*
-                val value = map
-
-                val arrayTotal = listOf(1,2,8)
-
-                val sum = arrayTotal.sumOf { it}
-
-                val allTotal : TextView = itemView.findViewById(R.id.total_transaksi_user_value)
-
-                allTotal.text = sum.toString()
-
-                 */
+                    //val intent = Intent(context, DetailBonActivity::class.java)
+                    //context.startActivity(intent)
+                }
             }
         }
 
         val context = itemView.context
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailBonViewHolder {
@@ -90,15 +92,26 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
 
     override fun onBindViewHolder(holder: DetailBonViewHolder, position: Int) {
         holder.bind(list[position])
-    }
 
-    private fun idBon(id : Int) {
-        val user : SharedPreferences.Editor = sharedPreferences.edit()
-
-        user.putInt(idBon, id)
-        user.apply()
+        context = holder.context
     }
 
     override fun getItemCount(): Int = list.size
+
+    fun delete(){
+        ApiBase.apiInterface.deleteBon(idBonValue).enqueue(object : Callback<ResponseApi> {
+            override fun onResponse(call: Call<ResponseApi>, response: Response<ResponseApi>) {
+                Toast.makeText(context, response.body()?.message, Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(context, BonActivity::class.java)
+                context.startActivity(intent)
+            }
+
+            override fun onFailure(call: Call<ResponseApi>, t: Throwable) {
+                Log.d("Failure", t.message.toString())
+            }
+
+        })
+    }
 
 }

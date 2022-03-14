@@ -138,10 +138,22 @@
 
     <ImageButton
         android:id="@+id/edit"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/edit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="15dp"
         android:background="@color/white"
+        android:src="@drawable/edit"
+        app:layout_constraintBottom_toBottomOf="@+id/delete"
+        app:layout_constraintEnd_toStartOf="@+id/delete"
+        app:layout_constraintTop_toTopOf="@+id/delete"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:src="@drawable/delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
