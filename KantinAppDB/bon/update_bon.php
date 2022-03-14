@@ -31,7 +31,7 @@ if (isset($_POST['id_bon']) && isset($_POST['tanggal']) && isset($_POST['menu'])
     
  
     // mysql update row with matched pid
-    $result = mysql_query("UPDATE bon SET tanggal = '$tanggal', menu = '$menu',harga_satuan = '$harga_satuan', harga_total = '$harga_total', pembayaran = '$pembayaran', id_user = '$id_user', id_pelanggan = '$id_pelanggan' where id_bon = $id_bon");
+    $result = mysql_query("UPDATE bon SET tanggal = '$tanggal', menu = '$menu', jumlah = '$jumlah', harga_satuan = '$harga_satuan', harga_total = '$harga_total', pembayaran = '$pembayaran', id_user = '$id_user', id_pelanggan = '$id_pelanggan' where id_bon = '$id_bon'");
  
     // check if row inserted or not
     if ($result) {

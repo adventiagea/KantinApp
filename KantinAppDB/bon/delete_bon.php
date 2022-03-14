@@ -9,8 +9,8 @@
 $response = array();
  
 // check for required fields
-if (isset($_POST['id_bon'])) {
-    $pid = $_POST['id_bon'];
+if (isset($_GET['id_bon'])) {
+    $id_bon = $_GET['id_bon'];
  
     // include db connect class
     require_once __DIR__ . '/db_connect.php';
@@ -25,14 +25,14 @@ if (isset($_POST['id_bon'])) {
     if (mysql_affected_rows() > 0) {
         // successfully updated
         $response["success"] = 1;
-        $response["message"] = "Item successfully deleted";
+        $response["message"] = "Sukses menghapus bon!";
  
         // echoing JSON response
         echo json_encode($response);
     } else {
         // no product found
         $response["success"] = 0;
-        $response["message"] = "No Item found";
+        $response["message"] = "Bon tidak ditemukan!";
  
         // echo no users JSON
         echo json_encode($response);
@@ -40,7 +40,7 @@ if (isset($_POST['id_bon'])) {
 } else {
     // required field is missing
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
+    $response["message"] = "Gagal!";
  
     // echoing JSON response
     echo json_encode($response);
