@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:padding="10dp"
-    tools:context=".EditBonActivity">
+    tools:context=".EditBonActivity"
+    tools:ignore="HardcodedText">
 
     <TextView
         android:id="@+id/tanggal_detail_title"
@@ -92,8 +93,8 @@
         android:id="@+id/jumlah_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
         android:layout_marginStart="7dp"
+        android:backgroundTint="@color/black"
         android:ems="3"
         android:fontFamily="@font/lato_regular"
         android:importantForAutofill="yes"
@@ -105,8 +106,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/jumlah_detail_title"
         app:layout_constraintStart_toEndOf="@+id/jumlah_detail_title"
-        app:layout_constraintTop_toTopOf="@+id/jumlah_detail_title"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toTopOf="@+id/jumlah_detail_title" />
 
     <TextView
         android:id="@+id/harga_detail_title"
@@ -120,23 +120,40 @@
         app:layout_constraintTop_toBottomOf="@+id/jumlah_detail_title"
         tools:ignore="HardcodedText" />
 
+    <TextView
+        android:id="@+id/rp_harga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="5dp"
+        android:text="Rp."
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/harga_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/harga_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/harga_detail_title"
+        tools:ignore="HardcodedText" />
+
     <EditText
         android:id="@+id/harga_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
-        android:ems="12"
+        android:ems="11"
         android:fontFamily="@font/lato_regular"
         android:importantForAutofill="no"
         android:inputType="number"
-        android:padding="10dp"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="#80000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/harga_detail_title"
-        app:layout_constraintStart_toStartOf="@+id/jumlah_detail"
-        app:layout_constraintTop_toTopOf="@+id/harga_detail_title"
+        app:layout_constraintBottom_toBottomOf="@+id/rp_harga"
+        app:layout_constraintStart_toEndOf="@+id/rp_harga"
+        app:layout_constraintTop_toTopOf="@+id/rp_harga"
         tools:ignore="HardcodedText,LabelFor" />
 
     <TextView
@@ -152,12 +169,25 @@
         app:layout_constraintTop_toBottomOf="@+id/harga_detail_title"
         tools:ignore="HardcodedText" />
 
+    <TextView
+        android:id="@+id/rp_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="5dp"
+        android:text="Rp."
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/total_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/total_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/total_detail_title" />
+
     <EditText
         android:id="@+id/total_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
-        android:ems="13"
+        android:ems="11"
         android:fontFamily="@font/lato_regular"
         android:importantForAutofill="no"
         android:inputType="number"
@@ -166,9 +196,9 @@
         android:textColorHint="#80000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/total_detail_title"
-        app:layout_constraintStart_toEndOf="@+id/total_detail_title"
-        app:layout_constraintTop_toTopOf="@+id/total_detail_title"
+        app:layout_constraintBottom_toBottomOf="@+id/rp_total"
+        app:layout_constraintStart_toEndOf="@+id/rp_total"
+        app:layout_constraintTop_toTopOf="@+id/rp_total"
         tools:ignore="HardcodedText" />
 
     <TextView
@@ -184,12 +214,25 @@
         app:layout_constraintTop_toBottomOf="@+id/total_detail_title"
         tools:ignore="HardcodedText" />
 
+    <TextView
+        android:id="@+id/rp_bayar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="5dp"
+        android:text="Rp."
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pembayaran_detail_title"
+        app:layout_constraintStart_toEndOf="@+id/pembayaran_detail_title"
+        app:layout_constraintTop_toTopOf="@+id/pembayaran_detail_title" />
+
     <EditText
         android:id="@+id/pembayaran_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
-        android:ems="10"
+        android:ems="9"
         android:fontFamily="@font/lato_regular"
         android:importantForAutofill="yes"
         android:inputType="number"
@@ -198,9 +241,9 @@
         android:textColorHint="#80000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/pembayaran_detail_title"
-        app:layout_constraintStart_toEndOf="@+id/pembayaran_detail_title"
-        app:layout_constraintTop_toTopOf="@+id/pembayaran_detail_title"
+        app:layout_constraintBottom_toBottomOf="@+id/rp_bayar"
+        app:layout_constraintStart_toEndOf="@+id/rp_bayar"
+        app:layout_constraintTop_toTopOf="@+id/rp_bayar"
         tools:ignore="HardcodedText" />
 
     <Button

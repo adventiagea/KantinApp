@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.dicoding.picodiploma.kantinapp.adapter.ListBonAdapter
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityBonBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.viewmodel.ListBonViewModel
+import java.lang.StringBuilder
 
 class BonActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
@@ -85,25 +87,26 @@ class BonActivity : AppCompatActivity() {
             if (it != null){
                 val totalBonValue = it[0].total.toString()
 
-                binding.totalValue.text = it[0].total.toString()
+                binding.totalValue.text = StringBuilder("Rp. $totalBonValue")
 
                 viewModel.getTotalBayarBon().observe(this, { bayar ->
                     if (bayar != null){
                         val totalBayarValue = bayar[0].total.toString()
 
-                        binding.bayarValue.text = bayar[0].total.toString()
+                        binding.bayarValue.text = StringBuilder("Rp. $totalBayarValue")
+                        binding.bayarValue.textAlignment = View.TEXT_ALIGNMENT_VIEW_START
 
                         val sisaValue = totalBonValue.toInt() - totalBayarValue.toInt()
 
-                        binding.sisaValue.text = sisaValue.toString()
+                        binding.sisaValue.text = StringBuilder("Rp. $sisaValue")
                     }
                     else {
-                        binding.bayarValue.text = "0"
+                        binding.bayarValue.text = StringBuilder("Rp. 0")
                     }
                 })
             }
             else{
-                binding.totalValue.text = "0"
+                binding.totalValue.text = StringBuilder("Rp. 0")
             }
         })
 
@@ -147,25 +150,25 @@ class BonActivity : AppCompatActivity() {
                 if (it != null){
                     val totalBonValue = it[0].total.toString()
 
-                    binding.totalValue.text = it[0].total.toString()
+                    binding.totalValue.text = StringBuilder("Rp. $totalBonValue")
 
                     viewModel.getTotalBayarBon().observe(this, { bayar ->
                         if (bayar != null){
                             val totalBayarValue = bayar[0].total.toString()
 
-                            binding.bayarValue.text = bayar[0].total.toString()
+                            binding.bayarValue.text = StringBuilder("Rp. $totalBayarValue")
 
                             val sisaValue = totalBonValue.toInt() - totalBayarValue.toInt()
 
-                            binding.sisaValue.text = sisaValue.toString()
+                            binding.sisaValue.text = StringBuilder("Rp. $sisaValue")
                         }
                         else {
-                            binding.bayarValue.text = "0"
+                            binding.bayarValue.text = StringBuilder("Rp. 0")
                         }
                     })
                 }
                 else{
-                    binding.totalValue.text = "0"
+                    binding.totalValue.text = StringBuilder("Rp. 0")
                 }
             })
 
@@ -199,7 +202,7 @@ class BonActivity : AppCompatActivity() {
             R.id.share -> {
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, "http://192.168.1.5/KantinAppDB/pdf/generate.php?id_pelanggan=${getIdPelanggan()}&id_user=${getIdUser()}")
+                    putExtra(Intent.EXTRA_TEXT, "http://192.168.1.7/KantinAppDB/pdf/generate.php?id_pelanggan=${getIdPelanggan()}&id_user=${getIdUser()}")
                     type = "text/*"
                 }
 

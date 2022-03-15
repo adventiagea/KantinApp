@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.picodiploma.kantinapp.databinding.ListTransaksiBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.utils.TransaksiDiff
+import java.lang.StringBuilder
 
 class ListBonAdapter : RecyclerView.Adapter<ListBonAdapter.TransaksiViewHolder>() {
     private lateinit var sharedPreferences: SharedPreferences
@@ -39,13 +40,13 @@ class ListBonAdapter : RecyclerView.Adapter<ListBonAdapter.TransaksiViewHolder>(
         fun bind (bon : BonData){
             binding.apply {
                 val tanggal = bon.tanggal
-                val total = bon.hargaTotal
-                val pembayaran = bon.pembayaran
+                val total = bon.hargaTotal.toString()
+                val pembayaran = bon.pembayaran.toString()
                 val id = bon.idBon
 
                 tanggalTransaksi.text = tanggal
-                totalTransaksi.text = total.toString()
-                pembayaranTransaksi.text = pembayaran.toString()
+                totalTransaksi.text = StringBuilder("Rp. $total")
+                pembayaranTransaksi.text = StringBuilder("Rp. $pembayaran")
 
                 sharedPreferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
                 if (id != null) {

@@ -11,6 +11,7 @@ import com.dicoding.picodiploma.kantinapp.adapter.ListBonDetailAdapter
 import com.dicoding.picodiploma.kantinapp.databinding.ActivityDetailBonBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.viewmodel.DetailBonViewModel
+import java.lang.StringBuilder
 
 class DetailBonActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBonBinding
@@ -50,7 +51,10 @@ class DetailBonActivity : AppCompatActivity() {
 
         viewModelDetail.getTotalBon().observe(this, {
             if (it != null){
-                binding.totalValue.text = it[0].total.toString()
+                binding.totalValue.text = StringBuilder("Rp. ${it[0].total}")
+            }
+            else{
+                binding.totalValue.text = StringBuilder("Rp. 0")
             }
         })
 
@@ -89,7 +93,10 @@ class DetailBonActivity : AppCompatActivity() {
 
             viewModelDetail.getTotalBon().observe(this, {
                 if (it != null){
-                    binding.totalValue.text = it[0].total.toString()
+                    binding.totalValue.text = StringBuilder("Rp. ${it[0].total}")
+                }
+                else{
+                    binding.totalValue.text = StringBuilder("Rp. 0")
                 }
             })
 

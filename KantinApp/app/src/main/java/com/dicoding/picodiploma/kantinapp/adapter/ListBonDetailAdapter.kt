@@ -46,7 +46,7 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
     inner class DetailBonViewHolder(private val binding : ListTransaksiDetailBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(bon: BonData) {
             binding.apply {
-                val total = bon.hargaTotal
+                val total = bon.hargaTotal.toString()
                 val pembayaran = bon.pembayaran.toString()
                 val harga = bon.hargaSatuan.toString()
                 val jumlah = bon.jumlah.toString()
@@ -56,9 +56,9 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
 
                 menuDetail.text = menu
                 jumlahDetail.text = jumlah
-                hargaDetail.text = harga
-                totalDetail.text = total.toString()
-                pembayaranDetail.text = pembayaran
+                hargaDetail.text = StringBuilder("Rp. $harga")
+                totalDetail.text = StringBuilder("Rp. $total")
+                pembayaranDetail.text = StringBuilder("Rp. $pembayaran")
 
                 edit.setOnClickListener {
                     val intent = Intent(context, EditBonActivity::class.java)
