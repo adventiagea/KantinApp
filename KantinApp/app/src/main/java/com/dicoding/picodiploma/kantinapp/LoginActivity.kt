@@ -11,7 +11,7 @@ import com.dicoding.picodiploma.kantinapp.databinding.ActivityLoginBinding
 import com.dicoding.picodiploma.kantinapp.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var loginBinding : ActivityLoginBinding //view binding dengan tampilan login
+    private lateinit var loginBinding : ActivityLoginBinding //deklarasi fitur view binding dengan tampilan login
     private lateinit var loginVM : LoginViewModel //deklarasi kelas view model
     private lateinit var sharedPreferences: SharedPreferences // deklarasi fitur shared preference
     private val preferencesName = "kantinApp" //key shared preference app
@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loginBinding = ActivityLoginBinding.inflate(layoutInflater)
+        loginBinding = ActivityLoginBinding.inflate(layoutInflater) //inisialisasi view binding
         setContentView(loginBinding.root)
 
         sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE) //inisialisasi fitur shared preference
