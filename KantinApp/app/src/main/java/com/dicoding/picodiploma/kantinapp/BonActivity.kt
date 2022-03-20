@@ -37,14 +37,6 @@ class BonActivity : AppCompatActivity() {
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
-        val userID = intent.getIntExtra(EXTRA_ID_USER, 0)
-        val pelangganID = intent.getStringExtra(EXTRA_ID_PELANGGAN)
-        val pelangganName = intent.getStringExtra(EXTRA_NAMA_PELANGGAN)
-        val bundle = Bundle()
-        bundle.getString(EXTRA_ID_PELANGGAN, pelangganID)
-        bundle.getInt(EXTRA_ID_USER, userID)
-        bundle.getString(EXTRA_NAMA_PELANGGAN, pelangganName)
-
         supportActionBar?.title = getNamaPelanggan()
 
         adapter = ListBonAdapter()
@@ -126,9 +118,6 @@ class BonActivity : AppCompatActivity() {
                             override fun setItemClicked(data: BonData) {
                                 val intent = Intent(this@BonActivity, DetailBonActivity::class.java)
                                 intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, data.tanggal)
-                                intent.putExtra(DetailBonActivity.EXTRA_ID_BON, data.idBon)
-                                intent.putExtra(DetailBonActivity.EXTRA_ID_PELANGGAN, data.idPelanggan)
-                                intent.putExtra(DetailBonActivity.EXTRA_ID_USER, data.idUser)
 
                                 startActivity(intent)
                             }
@@ -225,12 +214,5 @@ class BonActivity : AppCompatActivity() {
     private fun getIdPelanggan() : String? = sharedPreferences.getString(idPelanggan, null)
 
     private fun getNamaPelanggan() : String? = sharedPreferences.getString(namaPelanggan, null)
-
-
-    companion object {
-        const val EXTRA_ID_USER = "extra_id_user"
-        const val EXTRA_ID_PELANGGAN = "extra_id_pelanggan"
-        const val EXTRA_NAMA_PELANGGAN = "extra_nama_pelanggan"
-    }
 
 }

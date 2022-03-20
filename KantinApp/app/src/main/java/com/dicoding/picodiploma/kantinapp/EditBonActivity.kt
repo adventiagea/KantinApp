@@ -25,7 +25,6 @@ class EditBonActivity : AppCompatActivity() {
     private val preferencesName = "kantinApp"
     private val idPelanggan = "key_id_pelanggan"
     private val idKey = "key_id_user"
-    private val idBon = "key_id_bon"
     private val keyTanggal = "key_tanggal"
     private val cal = Calendar.getInstance()
     @SuppressLint("SetTextI18n")
@@ -42,18 +41,8 @@ class EditBonActivity : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
 
         val idBon = intent.getIntExtra(EXTRA_ID_BON, 0)
-        val menuV = intent.getStringExtra(EXTRA_MENU)
-        val hargaV = intent.getStringExtra(EXTRA_HARGA)
-        val jumlahV = intent.getStringExtra(EXTRA_JUMLAH)
-        val totalV = intent.getStringExtra(EXTRA_TOTAL)
-        val bayarV = intent.getStringExtra(EXTRA_PEMBAYARAN)
         val bundle = Bundle()
         bundle.getInt(EXTRA_ID_BON, idBon)
-        bundle.getString(EXTRA_MENU, menuV)
-        bundle.getString(EXTRA_HARGA, hargaV)
-        bundle.getString(EXTRA_JUMLAH, jumlahV)
-        bundle.getString(EXTRA_TOTAL, totalV)
-        bundle.getString(EXTRA_PEMBAYARAN, bayarV)
 
         binding.apply {
 
@@ -255,11 +244,6 @@ class EditBonActivity : AppCompatActivity() {
     private fun getTanggal() : String? = sharedPreferences.getString(keyTanggal, null)
 
     companion object{
-        const val EXTRA_MENU = "EXTRA_MENU"
-        const val EXTRA_JUMLAH = "EXTRA_JUMLAH"
-        const val EXTRA_HARGA = "EXTRA_HARGA"
-        const val EXTRA_TOTAL = "EXTRA_TOTAL"
-        const val EXTRA_PEMBAYARAN = "EXTRA_PEMBAYARAN"
         const val EXTRA_ID_BON = "extra_id_bon"
     }
 

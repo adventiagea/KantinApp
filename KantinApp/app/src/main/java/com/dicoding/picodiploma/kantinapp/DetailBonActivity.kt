@@ -38,14 +38,8 @@ class DetailBonActivity : AppCompatActivity() {
         viewModelDetail = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailBonViewModel::class.java]
 
         val tanggal = intent.getStringExtra(EXTRA_TANGGAL)
-        val userID = intent.getIntExtra(EXTRA_ID_BON, 0)
-        val bonID = intent.getIntExtra(EXTRA_ID_USER, 0)
-        val pelangganID = intent.getStringExtra(EXTRA_ID_PELANGGAN)
         val bundle = Bundle()
         bundle.getString(EXTRA_TANGGAL, tanggal)
-        bundle.getInt(EXTRA_ID_BON, userID)
-        bundle.getInt(EXTRA_ID_USER, bonID)
-        bundle.getString(EXTRA_ID_PELANGGAN, pelangganID)
 
         viewModelDetail.setTotalBon(getIdUser(), getIdPelanggan().toString(),  tanggal!!)
 
@@ -154,9 +148,6 @@ class DetailBonActivity : AppCompatActivity() {
 
     companion object{
         const val EXTRA_TANGGAL = "extra_tanggal"
-        const val EXTRA_ID_USER = "extra_id_user"
-        const val EXTRA_ID_PELANGGAN = "extra_id_pelanggan"
-        const val EXTRA_ID_BON = "extra_id_bon"
     }
 
 }
