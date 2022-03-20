@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    //shared preference untuk save id user
+    //shared preference untuk SAVE id user
     private fun idLogin(id : Int) {
         val user : SharedPreferences.Editor = sharedPreferences.edit()
 
@@ -72,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
         user.apply()
     }
 
-    //shared preference untuk save username user
+    //shared preference untuk SAVE username user
     private fun userLogin(username : String) {
         val user : SharedPreferences.Editor = sharedPreferences.edit()
 

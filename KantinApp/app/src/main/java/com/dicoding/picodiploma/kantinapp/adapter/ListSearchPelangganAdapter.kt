@@ -10,7 +10,7 @@ import com.dicoding.picodiploma.kantinapp.databinding.ListPelangganBinding
 import com.dicoding.picodiploma.kantinapp.model.PelangganData
 import com.dicoding.picodiploma.kantinapp.utils.PelangganDiff
 
-class ListAllPelangganAdapter: RecyclerView.Adapter<ListAllPelangganAdapter.PelangganViewHolder>() {
+class ListSearchPelangganAdapter: RecyclerView.Adapter<ListSearchPelangganAdapter.PelangganViewHolder>() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var onItemClickCallback : OnItemClickCallback
     private val preferencesName = "kantinApp"
