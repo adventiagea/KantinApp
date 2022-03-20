@@ -32,7 +32,7 @@
     <string name="default_tanggal">--/--/----</string>
     <string name="default_harga">12.000</string>
 
-    <string name="selesai">Selesai</string>
+    <string name="selesai">Simpan</string>
     <string name="simpan_perubahan">Simpan Perubahan</string>
     <string name="share">Bagikan</string>
     <string name="ubah_tanggal">Ubah Tanggal</string>

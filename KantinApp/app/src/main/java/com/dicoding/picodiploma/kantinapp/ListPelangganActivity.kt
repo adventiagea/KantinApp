@@ -99,46 +99,62 @@ class ListPelangganActivity : AppCompatActivity() {
 
         }
 
+        //hubungi db dan ambil response nya
         viewModel.getPelanggan().observe(this, {
+            //kalo response nya ada
             if (it != null){
+
+                //kalo response ada tapi kosong
                 if (it.isEmpty()){
-                    notFound()
+                    notFound() //aktifkan fungsi not found
                 }
+
+                //kalo response ada dan isinya ada
                 else {
-                    searchAdapter.listPelanggan(it)
+                    searchAdapter.listPelanggan(it) //tampilkan hasil dan implementasikan pada recycler view search
 
                     listPelangganBinding.apply {
-                        notFound.visibility = View.INVISIBLE
-                        showAll.visibility = View.INVISIBLE
+                        notFound.visibility = View.INVISIBLE //tampil ui text "tidak ada data"
+                        showAll.visibility = View.INVISIBLE //tampil ui tombol "tampilkan semua pelanggan"
 
-                        searchPelangganRv.visibility = View.VISIBLE
+                        searchPelangganRv.visibility = View.VISIBLE //recycler view search pelanggan TAMPIL
                     }
                 }
             }
+
+            //kalo response gak ada
             else {
-                notFound()
+                notFound() //aktifkan fungsi not found
             }
         })
 
+        //hubungi db dan ambil response nya
         viewModel.getAllPelanggan().observe(this, {
+            //kalo response nya ada
             if (it != null){
+
+                //kalo response ada tapi kosong
                 if (it.isEmpty()){
-                    notFound()
+                    notFound() //aktifkan fungsi not found
                 }
+
+                //kalo response ada dan isinya ada
                 else {
-                    adapter.listPelanggan(it)
+                    adapter.listPelanggan(it) //tampilkan hasil dan implementasikan pada recycler view search
 
                     listPelangganBinding.apply {
-                        notFound.visibility = View.INVISIBLE
-                        showAll.visibility = View.INVISIBLE
+                        notFound.visibility = View.INVISIBLE //tampil ui text "tidak ada data"
+                        showAll.visibility = View.INVISIBLE //tampil ui tombol "tampilkan semua pelanggan"
                     }
                 }
             }
+            //kalo response gak ada
             else {
-                notFound()
+                notFound()//aktifkan fungsi not found
             }
         })
 
+        //aktifkan fungsi ADD FAB
         addFAB()
 
     }
