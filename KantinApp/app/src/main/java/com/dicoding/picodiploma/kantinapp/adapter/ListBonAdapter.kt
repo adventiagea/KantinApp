@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.picodiploma.kantinapp.databinding.ListTransaksiBinding
+import com.dicoding.picodiploma.kantinapp.databinding.ListBonBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.utils.TransaksiDiff
 import java.lang.StringBuilder
@@ -36,7 +36,7 @@ class ListBonAdapter : RecyclerView.Adapter<ListBonAdapter.TransaksiViewHolder>(
         this.list = arrayList
     }
 
-    inner class TransaksiViewHolder(private val binding: ListTransaksiBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class TransaksiViewHolder(private val binding: ListBonBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind (bon : BonData){
             binding.apply {
                 val tanggal = bon.tanggal
@@ -64,7 +64,7 @@ class ListBonAdapter : RecyclerView.Adapter<ListBonAdapter.TransaksiViewHolder>(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransaksiViewHolder {
-        return TransaksiViewHolder(ListTransaksiBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return TransaksiViewHolder(ListBonBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: TransaksiViewHolder, position: Int) {

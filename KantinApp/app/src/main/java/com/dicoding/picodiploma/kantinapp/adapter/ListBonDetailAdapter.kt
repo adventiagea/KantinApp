@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.picodiploma.kantinapp.*
 import com.dicoding.picodiploma.kantinapp.api.ApiBase
-import com.dicoding.picodiploma.kantinapp.databinding.ListTransaksiDetailBinding
+import com.dicoding.picodiploma.kantinapp.databinding.ListBonDetailBinding
 import com.dicoding.picodiploma.kantinapp.model.BonData
 import com.dicoding.picodiploma.kantinapp.model.ResponseApi
 import com.dicoding.picodiploma.kantinapp.utils.TransaksiDiff
@@ -43,7 +43,7 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
         this.list = arrayList
     }
 
-    inner class DetailBonViewHolder(private val binding : ListTransaksiDetailBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class DetailBonViewHolder(private val binding : ListBonDetailBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(bon: BonData) {
             binding.apply {
                 val total = bon.hargaTotal.toString()
@@ -95,7 +95,7 @@ class ListBonDetailAdapter : RecyclerView.Adapter<ListBonDetailAdapter.DetailBon
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailBonViewHolder {
-        return DetailBonViewHolder(ListTransaksiDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return DetailBonViewHolder(ListBonDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: DetailBonViewHolder, position: Int) {
