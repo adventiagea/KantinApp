@@ -19,47 +19,48 @@ import com.dicoding.picodiploma.kantinapp.viewmodel.ListBonViewModel
 import java.lang.StringBuilder
 
 class BonActivity : AppCompatActivity() {
-    private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var binding : ActivityBonBinding
-    private lateinit var viewModel : ListBonViewModel
-    private lateinit var adapter: ListBonAdapter
-    private val preferencesName = "kantinApp"
-    private val idPelanggan = "key_id_pelanggan"
-    private val namaPelanggan = "key_nama_pelanggan"
-    private val idKey = "key_id_user"
+    private lateinit var sharedPreferences: SharedPreferences // deklarasi fitur shared preference
+    private lateinit var binding : ActivityBonBinding //deklarasi fitur view binding dengan tampilan
+    private lateinit var viewModel : ListBonViewModel //deklarasi kelas view model
+    private lateinit var adapter: ListBonAdapter //deklarasi kelas adapter list all bon
+    private val preferencesName = "kantinApp"//key shared preference app
+    private val idPelanggan = "key_id_pelanggan" //key shared preference id pelanggan
+    private val namaPelanggan = "key_nama_pelanggan" //key shared preference nama pelanggan
+    private val idKey = "key_id_user"//key shared preference id user
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBonBinding.inflate(layoutInflater)
+        binding = ActivityBonBinding.inflate(layoutInflater) //inisialisasi view binding
         setContentView(binding.root)
 
-        sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)//inisialisasi fitur shared preference
 
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back) //membuat button back di kiri atas
 
-        supportActionBar?.title = getNamaPelanggan()
+        supportActionBar?.title = getNamaPelanggan() //set up tulisan title tampilan menjadi nama pelanggan
 
-        adapter = ListBonAdapter()
+        adapter = ListBonAdapter() //inisialisasi adapter
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ListBonViewModel::class.java]
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ListBonViewModel::class.java]//inisialisasi fitur viewmodel
 
-        viewModel.setBon(getIdPelanggan().toString(), getIdUser())
+        viewModel.setBon(getIdPelanggan().toString(), getIdUser()) //perintah cari semua bon berdasarkan ID PELANGGAN dan ID USER
 
-        viewModel.getBon().observe(this, {
-            if (it != null){
+        viewModel.getBon().observe(this, { //ambil response nya
+            if (it != null){//kalo response nya ada
                 binding.apply {
-                    bonRv.layoutManager = LinearLayoutManager(this@BonActivity)
-                    bonRv.setHasFixedSize(true)
-                    bonRv.adapter = adapter
+                    bonRv.layoutManager = LinearLayoutManager(this@BonActivity)//set up layout nya recycler view , jadi yg dipake itu layout LINEAR
+                    bonRv.setHasFixedSize(true)//set up recycler view supaya ukurannya tetap konsisten
+                    bonRv.adapter = adapter //set up adapter nya recycler view
 
-                    adapter.listTransaksi(it)
+                    adapter.listTransaksi(it)//tampilkan hasil dan implementasikan pada recycler view
 
+                    //kalo item dari recycler view diklik
                     adapter.setonItemClickCallback(object : ListBonAdapter.OnItemClickCallback{
                         override fun setItemClicked(data: BonData) {
                             val intent = Intent(this@BonActivity, DetailBonActivity::class.java)
-                            intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, data.tanggal)
+                            intent.putExtra(DetailBonActivity.EXTRA_TANGGAL, data.tanggal) //save data tanggal
 
-                            startActivity(intent)
+                            startActivity(intent) //pindah ke tampilan bon
                         }
 
                     })
@@ -67,11 +68,13 @@ class BonActivity : AppCompatActivity() {
 
                 }
             }
+            //kalo response gak ada
             else {
-                notFound()
+                notFound()//aktifkan fungsi not found
             }
         })
 
+        //SET UP TOTAL BON, PEMBAYARAN DAN SISA
         viewModel.setTotalBon(getIdUser(), getIdPelanggan().toString())
         viewModel.setTotalBayarBon(getIdUser(), getIdPelanggan().toString())
 
@@ -102,6 +105,7 @@ class BonActivity : AppCompatActivity() {
             }
         })
 
+        //SET UP FITUR REFRESH
         binding.swipeDown.setOnRefreshListener {
             viewModel.setBon(getIdPelanggan().toString(), getIdUser())
 
@@ -166,6 +170,7 @@ class BonActivity : AppCompatActivity() {
 
     }
 
+    //SET UP MENU
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater : MenuInflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
@@ -174,6 +179,7 @@ class BonActivity : AppCompatActivity() {
         return true
     }
 
+    //SET UP FUNGSI MENU
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.menu_edit_nama -> {
@@ -205,10 +211,12 @@ class BonActivity : AppCompatActivity() {
         }
     }
 
+    //fungsi not found
     private fun notFound() {
         Toast.makeText(this,"Belum ada bon!", Toast.LENGTH_SHORT).show()
     }
 
+    //panggil value
     private fun getIdUser() : Int = sharedPreferences.getInt(idKey, 0)
 
     private fun getIdPelanggan() : String? = sharedPreferences.getString(idPelanggan, null)

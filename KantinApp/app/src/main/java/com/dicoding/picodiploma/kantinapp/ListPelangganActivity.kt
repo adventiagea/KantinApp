@@ -62,7 +62,7 @@ class ListPelangganActivity : AppCompatActivity() {
                 }
             })
 
-            viewModel.setAllPelanggan(getIdUser()) //ambil semua data pelanggan dari ID USER
+            viewModel.setAllPelanggan(getIdUser()) //perintah cari semua data pelanggan dari ID USER
 
 
             buttonSearch.setOnClickListener {//kalo tombol search diklik
@@ -99,7 +99,7 @@ class ListPelangganActivity : AppCompatActivity() {
 
         }
 
-        //hubungi db dan ambil response nya
+        //ambil response db ##utk search pelanggan
         viewModel.getPelanggan().observe(this, {
             //kalo response nya ada
             if (it != null){
@@ -128,7 +128,7 @@ class ListPelangganActivity : AppCompatActivity() {
             }
         })
 
-        //hubungi db dan ambil response nya
+        //ambil response db ##utk all pelanggan
         viewModel.getAllPelanggan().observe(this, {
             //kalo response nya ada
             if (it != null){
@@ -181,9 +181,9 @@ class ListPelangganActivity : AppCompatActivity() {
                 pelangganRv.visibility = View.VISIBLE //recycler view 'all pelanggan' muncul
                 searchPelangganRv.visibility = View.GONE //recycler view 'search pelanggan' hilang
 
-                viewModel.setAllPelanggan(getIdUser()) //cari semua pelanggan berdasarkan id user
+                viewModel.setAllPelanggan(getIdUser()) ////perintah cari pelanggan berdasarkan id user
 
-                viewModel.getPelanggan().observe(this@ListPelangganActivity, {//hubungi db dan ambil response nya
+                viewModel.getPelanggan().observe(this@ListPelangganActivity, {//ambil response nya
                     //kalo response nya ada
                     if (it != null){
 
